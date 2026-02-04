@@ -23,8 +23,11 @@ export default function Hero() {
           Desatascos Profesionales en Bornos
         </h1>
         <p className="text-xl mb-8 drop-shadow-md">
-          Tu vecino de confianza para urgencias 24h, limpieza de tuberías e
-          inspección con cámara en toda la Sierra de Cádiz.
+          {/* En Hero.jsx */}
+          <p className="text-xl md:text-2xl mb-8 text-gray-200">
+            Tu vecino de confianza para urgencias 24h y limpieza de tuberías en
+            toda la Sierra de Cádiz.
+          </p>
         </p>
         <a className="bg-white text-blue-700 font-bold py-4 px-10 rounded-lg text-lg shadow-xl hover:scale-105 transition">
           Pedir Presupuesto Gratis
