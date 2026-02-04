@@ -22,13 +22,12 @@ export default function Hero() {
         <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">
           Desatascos Profesionales en Bornos
         </h1>
-        <p className="text-xl mb-8 drop-shadow-md">
-          {/* En Hero.jsx */}
-          <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            Tu vecino de confianza para urgencias 24h y limpieza de tuberías en
-            toda la Sierra de Cádiz.
-          </p>
+
+        <p className="text-xl md:text-2xl mb-8 text-gray-200 drop-shadow-md">
+          Tu vecino de confianza para urgencias 24h y limpieza de tuberías en
+          toda la Sierra de Cádiz.
         </p>
+
         <button
           onClick={() =>
             document
