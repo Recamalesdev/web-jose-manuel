@@ -37,6 +37,18 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Desatascos Manuel. Todos los
             derechos reservados.
           </p>
+
+          <div className="mt-4 text-xs text-gray-600">
+            <span>Diseño y Desarrollo web por </span>
+            <a
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 font-bold transition"
+            >
+              Bernardo Recamales
+            </a>
+          </div>
         </div>
       </div>
     </footer>
