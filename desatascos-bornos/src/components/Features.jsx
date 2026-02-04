@@ -47,9 +47,11 @@ export default function Features() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((item) => (
+          {features.map((item, index) => (
             <div
               key={item.id}
+              data-aos="fade-up" // <--- 1. Animación de aparición
+              data-aos-delay={index * 100} // <--- 2. Retraso incremental
               className="text-center p-6 border border-gray-100 rounded-2xl hover:shadow-xl transition-shadow duration-300 bg-blue-50/50"
             >
               <div className="flex justify-center mb-6">

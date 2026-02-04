@@ -38,9 +38,11 @@ export default function Services() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               key={service.id}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
             >
               {/* ZONA DE LA IMAGEN */}

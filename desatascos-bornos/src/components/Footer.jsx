@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="mt-4 text-xs text-gray-600">
             <span>Diseño y Desarrollo web por </span>
             <a
-              href=""
+              href="https://www.linkedin.com/feed/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 font-bold transition"
