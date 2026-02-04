@@ -29,9 +29,16 @@ export default function Hero() {
             toda la Sierra de Cádiz.
           </p>
         </p>
-        <a className="bg-white text-blue-700 font-bold py-4 px-10 rounded-lg text-lg shadow-xl hover:scale-105 transition">
+        <button
+          onClick={() =>
+            document
+              .getElementById("contact")
+              .scrollIntoView({ behavior: "smooth" })
+          }
+          className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition hover:scale-105 shadow-lg cursor-pointer"
+        >
           Pedir Presupuesto Gratis
-        </a>
+        </button>
       </div>
     </section>
   );

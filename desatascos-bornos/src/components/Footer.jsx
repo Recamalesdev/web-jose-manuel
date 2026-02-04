@@ -20,7 +20,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://www.facebook.com/profile.php?id=TU_ID_AQUI" // Pega aquí su enlace real
+            href="https://www.facebook.com/profile.php?id=61556096898442"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:text-blue-300 transition flex items-center gap-2"
