@@ -3,7 +3,7 @@ import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function WhatsAppBtn() {
-  const phoneNumber = 34650040212;
+  const phoneNumber = "34650040212";
   const message = "Hola, me gustaría pedir presupuesto para un desatasco.";
 
   // Creamos el enlace oficial de la API de WhatsApp
