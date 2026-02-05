@@ -44,16 +44,19 @@ export default function Contact() {
           origin: { y: 0.6 }, // Altura desde donde salen)
         });
 
-        alert(
-          "¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.",
-        );
-        setFormData({
-          nombre: "",
-          telefono: "",
-          servicio: "general",
-          mensaje: "",
-        });
-        setIsSending(false);
+        setTimeout(() => {
+          alert(
+            "¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.",
+          );
+
+          setFormData({
+            nombre: "",
+            telefono: "",
+            servicio: "general",
+            mensaje: "",
+          });
+          setIsSending(false);
+        }, 1000);
       })
       .catch((err) => {
         console.log("FALLO...", err);
