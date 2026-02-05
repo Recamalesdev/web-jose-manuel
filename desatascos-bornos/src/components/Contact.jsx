@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
 
 export default function Contact() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
     telefono: "",
@@ -35,34 +36,32 @@ export default function Contact() {
         templateParams,
         "3jVXdNczWreoBMglL",
       )
+
       .then((response) => {
         console.log("ÉXITO!", response.status, response.text);
 
+        // 1. LANZAR EL CONFETI
         confetti({
           particleCount: 150,
-          spread: 70, // Cuánto se abren
-          origin: { y: 0.6 }, // Altura desde donde salen)
+          spread: 70,
+          origin: { y: 0.6 },
         });
 
-        setTimeout(() => {
-          alert(
-            "¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.",
-          );
+        // RESETEAR EL FORMULARIO
+        setFormData({
+          nombre: "",
+          telefono: "",
+          servicio: "general",
+          mensaje: "",
+        });
 
-          setFormData({
-            nombre: "",
-            telefono: "",
-            servicio: "general",
-            mensaje: "",
-          });
-          setIsSending(false);
-        }, 1000);
+        // 2. ACTUALIZAR EL ESTADO PARA MOSTRAR MENSAJE DE ÉXITO
+        setIsSubmitted(true);
+        setIsSending(false);
       })
       .catch((err) => {
         console.log("FALLO...", err);
-        alert(
-          "Hubo un error al enviar. Por favor, llama directamente al 650 040 212.",
-        );
+        alert("Hubo un error. Llama al 650 040 212.");
         setIsSending(false);
       });
   };
@@ -105,84 +104,105 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="p-8 md:w-2/3">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-200 outline-none"
-                    placeholder="Nombre"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-200 outline-none"
-                    placeholder="600..."
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Servicio
-                </label>
-                <select
-                  name="servicio"
-                  value={formData.servicio}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white outline-none"
+          {/* Lado Derecho: Formulario o Mensaje de Éxito */}
+          <div className="p-8 md:w-2/3 bg-white">
+            {isSubmitted ? (
+              // 🔵 OPCIÓN A: MENSAJE DE ÉXITO CON CONFETI (Se muestra tras enviar el formulario)
+              <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in">
+                <div className="text-6xl mb-4">🎉</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  ¡Mensaje Recibido!
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Manuel te llamará lo antes posible.
+                </p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="text-blue-600 font-medium hover:text-blue-800 underline transition"
                 >
-                  <option value="general">Consulta General</option>
-                  <option value="urgencia">🚨 Urgencia 24h</option>
-                  <option value="arquetas">Limpieza de Arquetas</option>
-                  <option value="pavimentos">Limpieza de Pavimentos</option>
-                </select>
+                  Enviar otro mensaje
+                </button>
               </div>
+            ) : (
+              // 🔵 OPCIÓN B: FORMULARIO DE CONTACTO (Se muestra por defecto)
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Nombre
+                    </label>
+                    <input
+                      type="text"
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-200 outline-none"
+                      placeholder="Nombre"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Teléfono
+                    </label>
+                    <input
+                      type="tel"
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-200 outline-none"
+                      placeholder="600..."
+                    />
+                  </div>
+                </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Mensaje
-                </label>
-                <textarea
-                  name="mensaje"
-                  value={formData.mensaje}
-                  onChange={handleChange}
-                  rows="3"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none"
-                  placeholder="Detalles..."
-                ></textarea>
-              </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Servicio
+                  </label>
+                  <select
+                    name="servicio"
+                    value={formData.servicio}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white outline-none"
+                  >
+                    <option value="general">Consulta General</option>
+                    <option value="urgencia">🚨 Urgencia 24h</option>
+                    <option value="arquetas">Limpieza de Arquetas</option>
+                    <option value="pavimentos">Limpieza de Pavimentos</option>
+                  </select>
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSending}
-                className={`w-full font-bold py-4 rounded-lg text-white transition duration-300 shadow-lg ${
-                  isSending
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-900 hover:bg-blue-800 hover:-translate-y-1"
-                }`}
-              >
-                {isSending
-                  ? "Enviando aviso..."
-                  : "Solicitar Presupuesto Gratis"}
-              </button>
-            </form>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Mensaje
+                  </label>
+                  <textarea
+                    name="mensaje"
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    rows="3"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none"
+                    placeholder="Detalles..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSending}
+                  className={`w-full font-bold py-4 rounded-lg text-white transition duration-300 shadow-lg ${
+                    isSending
+                      ? "bg-gray-400 cursor-not-allowed"
+                      : "bg-blue-900 hover:bg-blue-800 hover:-translate-y-1"
+                  }`}
+                >
+                  {isSending
+                    ? "Enviando aviso..."
+                    : "Solicitar Presupuesto Gratis"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
