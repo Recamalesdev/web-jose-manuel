@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import confetti from "canvas-confetti";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -36,6 +37,13 @@ export default function Contact() {
       )
       .then((response) => {
         console.log("ÉXITO!", response.status, response.text);
+
+        confetti({
+          particleCount: 150,
+          spread: 70, // Cuánto se abren
+          origin: { y: 0.6 }, // Altura desde donde salen)
+        });
+
         alert(
           "¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.",
         );
