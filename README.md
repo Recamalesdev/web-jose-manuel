@@ -41,6 +41,12 @@ He utilizado un stack moderno enfocado en el rendimiento (Performance) y la expe
 
 ---
 
+## 📸 Capturas de Pantalla
+
+![Vista previa del proyecto](./webjosemanuel.jpg)
+
+---
+
 ## 🔧 Instalación Local
 
 Si deseas clonar y ejecutar este proyecto en tu entorno local:
