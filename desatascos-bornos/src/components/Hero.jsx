@@ -1,23 +1,20 @@
-import bgImage from "../assets/camion-manuel.jpg";
-
 export default function Hero() {
+  const bgImage =
+    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80";
+
   return (
     <section className="relative h-[70vh] flex items-center justify-center text-white">
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/20 to-black/10 z-10"></div>
+      {/* FONDO: Imagen + Capa Oscura */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80')",
-        }}
+        style={{ backgroundImage: `url(${bgImage})` }}
       >
-        {/* Aquí es donde pondré la foto de la furgoneta en el Castillo de los Ribera */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        ></div>
+        {/* Esto es una capa negra semitransparente encima de la foto 
+            para que el texto blanco se lea perfectamente */}
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
+      {/* CONTENIDO (Texto y Botón) */}
       <div className="relative z-20 text-center px-4 max-w-3xl">
         <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">
           Desatascos Profesionales en Bornos

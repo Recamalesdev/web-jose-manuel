@@ -1,5 +1,6 @@
 // src/components/Services.jsx
 import React from "react";
+import furgoneta from "../assets/furgoneta.jpg";
 
 export default function Services() {
   const services = [
@@ -9,8 +10,7 @@ export default function Services() {
       description:
         "Llegamos en menos de 1 hora. Solución rápida para fregaderos, bajantes y baños atascados.",
 
-      image:
-        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZ98ZEGid3Dczdx19J5bc8-Dp-W2ZNqocbd0E_aNojJu4strFBAmoumjQqR5KHatjXKsr81o8ryDjICo7wQyeVjOh0px8vTjaYzqHEbN0lEO9JIBrZMAtrJ7kbB2SmKFVr_BG1XHE586Ax/s640/servicio+urgencias+resulima+sevilla.jpg",
+      image: furgoneta,
     },
 
     {
@@ -46,7 +46,7 @@ export default function Services() {
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
             >
               {/* ZONA DE LA IMAGEN */}
-              <div className="h-48 w-full">
+              <div className="h-48 overflow-hidden rounded-t-lg">
                 <img
                   src={service.image}
                   alt={service.title}
