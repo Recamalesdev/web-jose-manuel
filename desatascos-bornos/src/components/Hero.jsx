@@ -11,7 +11,7 @@ export default function Hero() {
       >
         {/* Esto es una capa negra semitransparente encima de la foto 
             para que el texto blanco se lea perfectamente */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/20 md:bg-black/40"></div>
       </div>
 
       {/* CONTENIDO (Texto y Botón) */}
