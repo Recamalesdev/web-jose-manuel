@@ -57,3 +57,10 @@ npm install
 
 # 4. Iniciar servidor de desarrollo
 npm run dev
+---
+
+👤 Autor
+Bernardo Recamales
+
+Desarrollador Frontend & Trail Runner 🏔️
+
