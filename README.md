@@ -43,7 +43,7 @@ He utilizado un stack moderno enfocado en el rendimiento (Performance) y la expe
 
 ## 📸 Capturas de Pantalla
 
-![Vista previa del proyecto](./desatascos-bornos/webjosemanuel.jpg)
+![Vista previa del proyecto](desatascos-bornos/webjosemanuel.PNG)
 
 ---
 
