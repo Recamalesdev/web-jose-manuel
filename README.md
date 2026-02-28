@@ -73,40 +73,4 @@ Bernardo Recamales
 Desarrollador Frontend & Trail Runner 🏔️
 
 
----
-
-# 🚛 Desatascos Manuel - Corporate Website
-
-> **Professional web solution for 24/7 emergency services and maintenance in Sierra de Cádiz, Spain.**
-
-![Project Status](https://img.shields.io/badge/Status-In_Production-success?style=for-the-badge)
-
-## 📋 About the Project
-
-This is a **Single Page Application (SPA)** developed to digitize a local plumbing and drainage business. The main goal was to create a fast, accessible, and conversion-oriented digital presence (focused on emergency calls).
-
-### 🚀 Live Demo
-Check out the project here:
-👉 **[https://web-jose-manuel-seven.vercel.app/]**
-
----
-
-## 🛠️ Tech Stack
-
-<p align="left">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
-  <img src="https://img.shields.io/badge/EmailJS-FF9A00?style=for-the-badge&logo=email&logoColor=white" alt="EmailJS" />
-</p>
-
----
-
-## ✨ Key Features
-
-* **⚡ Ultra-fast Performance:** Built with **Vite** for near-instant loading times.
-* **📱 Mobile-First Design:** Fully responsive interface optimized for mobile users.
-* **📧 Lead Management:** Integrated with **EmailJS** for direct quote requests.
-* **🎨 Modern UI/UX:** Clean and professional look using **Tailwind CSS**.
-
 
