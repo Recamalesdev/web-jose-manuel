@@ -84,7 +84,7 @@ Frontend Developer & Trail Runner 🏔️
 > **Professional web solution for 24/7 emergency services and maintenance in Sierra de Cádiz, Spain.**
 
 ![Project Status](https://img.shields.io/badge/Status-In_Production-success?style=for-the-badge)
-![Licencia](https://img.shields.io/badge/Licencia-Privada-red?style=for-the-badge)
+![Licencia](https://img.shields.io/badge/Private-License-red?style=for-the-badge)
 
 ## 📋 About the Project
 
