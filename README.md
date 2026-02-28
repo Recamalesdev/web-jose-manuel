@@ -46,7 +46,7 @@ He utilizado un stack moderno enfocado en el rendimiento (Performance) y la expe
 
 ## 📸 Capturas de Pantalla
 
-![Vista previa del proyecto](./webjosemanuel.PNG)
+![Vista previa del proyecto](desatascos-bornos/webjosemanuel.PNG)
 
 ---
 
@@ -68,11 +68,9 @@ npm install
 npm run dev
 ```
 ---
-
 👤 Autor
 Bernardo Recamales
 Desarrollador Frontend & Trail Runner 🏔️
-
 ---
 
 <a id="english"></a>
@@ -80,11 +78,56 @@ Desarrollador Frontend & Trail Runner 🏔️
 🌍 English Version
 (Translated with the assistance of AI for technical accuracy)
 
-Professional web solution for 24/7 emergency services in Sierra de Cádiz, Spain.
+🚛 Desatascos Manuel - Corporate Website
+Professional web solution for 24/7 emergency services and maintenance in Sierra de Cádiz, Spain.
 
-This is a Single Page Application (SPA) developed to digitize a local business.
+📋 About the Project
+This project is a Single Page Application (SPA) developed to digitize a local plumbing and drainage business.
 
-🚀 Demo & Code
-Live Site: Visit the live website
+The main goal was to create a fast, accessible, and conversion-oriented digital presence (focused on emergency calls), replacing traditional methods with a modern technological solution.
 
-Stack: React, Vite, Tailwind CSS, EmailJS.
+🚀 Live Demo
+You can see the project running here:
+👉 Visit Desatascos Manuel Website
+
+🛠️ Tech Stack
+I have used a modern stack focused on performance and user experience (UX):
+
+<p align="left">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+<img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JS" />
+<img src="https://img.shields.io/badge/EmailJS-FF9A00?style=for-the-badge&logo=email&logoColor=white" alt="EmailJS" />
+</p>
+
+✨ Key Features
+⚡ Ultra-fast Performance: Built with Vite, eliminating unnecessary load times critical for emergency services.
+
+📱 Mobile-First Design: Fully responsive interface adapted for mobile devices (where 90% of emergency searches occur).
+
+📧 Quote Management: Integration with EmailJS to receive contact forms directly to the client's email without the need for a complex backend.
+
+🎨 Modern UI/UX: Use of Tailwind CSS for a clean design, with visual feedback (Toasts/Confetti) to improve user interaction.
+
+🔒 Security and Optimization: Clean and structured code following best component practices in React.
+
+📸 Screenshots
+🔧 Local Installation
+If you want to clone and run this project in your local environment:
+
+Bash
+# 1. Clone the repository
+git clone [https://github.com/recamalesdev/web-jose-manuel.git](https://github.com/recamalesdev/web-jose-manuel.git)
+
+# 2. Enter the directory
+cd web-jose-manuel
+
+# 3. Install dependencies
+npm install
+
+# 4. Start development server
+npm run dev
+👤 Author
+Bernardo Recamales
+Frontend Developer & Trail Runner 🏔️
