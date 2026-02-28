@@ -1,5 +1,4 @@
 [Leer en Español](#-desatascos-manuel---web-corporativa) | [Read in English](#-desatascos-manuel---corporate-website)
-
 # 🚛 Desatascos Manuel - Web Corporativa
 
 > **Solución web profesional para servicios de urgencias 24h y mantenimiento en la Sierra de Cádiz.**
@@ -74,7 +73,7 @@ Desarrollador Frontend & Trail Runner 🏔️
 
 ---
 
-## English Version
+#-desatascos-manuel---corporate-website
 *(Translated with the assistance of AI for technical accuracy)*
 
 > **Professional web solution for 24/7 emergency services in Sierra de Cádiz, Spain.**
