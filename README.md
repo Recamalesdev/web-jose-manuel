@@ -72,5 +72,18 @@ Bernardo Recamales
 
 Desarrollador Frontend & Trail Runner 🏔️
 
+---
 
+## English Version
+*(Translated with the assistance of AI for technical accuracy)*
+
+> **Professional web solution for 24/7 emergency services in Sierra de Cádiz, Spain.**
+
+This is a **Single Page Application (SPA)** developed to digitize a local business. 
+
+### 🚀 Demo & Code
+- **Live Site:** [https://web-jose-manuel-seven.vercel.app/]
+- **Stack:** React, Vite, Tailwind CSS, EmailJS.
+
+---
 
