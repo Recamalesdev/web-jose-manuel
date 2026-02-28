@@ -70,6 +70,7 @@ npm run dev
 ---
 👤 Author
 Bernardo Recamales
+
 Frontend Developer & Trail Runner 🏔️
 ---
 
