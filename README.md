@@ -1,4 +1,6 @@
-[Leer en Español](#-desatascos-manuel---web-corporativa) | [Read in English](#-desatascos-manuel---corporate-website)
+[🇪🇸 Leer en Español](#español) | [🇬🇧 Read in English](#english)
+
+<a id="español"></a>
 # 🚛 Desatascos Manuel - Web Corporativa
 
 > **Solución web profesional para servicios de urgencias 24h y mantenimiento en la Sierra de Cádiz.**
@@ -14,7 +16,7 @@ El objetivo principal era crear una presencia digital rápida, accesible y enfoc
 
 ### 🚀 Despliegue (Demo)
 Puedes ver el proyecto en funcionamiento aquí:
-👉 **[https://web-jose-manuel-seven.vercel.app/]**
+👉 **[Visitar la Web de Desatascos Manuel](https://web-jose-manuel-seven.vercel.app/)**
 
 ---
 
@@ -44,7 +46,7 @@ He utilizado un stack moderno enfocado en el rendimiento (Performance) y la expe
 
 ## 📸 Capturas de Pantalla
 
-![Vista previa del proyecto](desatascos-bornos/webjosemanuel.PNG)
+![Vista previa del proyecto](./webjosemanuel.PNG)
 
 ---
 
@@ -54,7 +56,7 @@ Si deseas clonar y ejecutar este proyecto en tu entorno local:
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/recamalesdev/web-jose-manuel.git https://github.com/recamalesdev/web-jose-manuel.git
+git clone [https://github.com/recamalesdev/web-jose-manuel.git](https://github.com/recamalesdev/web-jose-manuel.git)
 
 # 2. Entrar en el directorio
 cd web-jose-manuel
@@ -65,24 +67,24 @@ npm install
 # 4. Iniciar servidor de desarrollo
 npm run dev
 ```
+---
 
 👤 Autor
 Bernardo Recamales
-
 Desarrollador Frontend & Trail Runner 🏔️
 
 ---
 
-#-desatascos-manuel---corporate-website
-*(Translated with the assistance of AI for technical accuracy)*
+<a id="english"></a>
 
-> **Professional web solution for 24/7 emergency services in Sierra de Cádiz, Spain.**
+🌍 English Version
+(Translated with the assistance of AI for technical accuracy)
 
-This is a **Single Page Application (SPA)** developed to digitize a local business. 
+Professional web solution for 24/7 emergency services in Sierra de Cádiz, Spain.
 
-### 🚀 Demo & Code
-- **Live Site:** [https://web-jose-manuel-seven.vercel.app/]
-- **Stack:** React, Vite, Tailwind CSS, EmailJS.
+This is a Single Page Application (SPA) developed to digitize a local business.
 
----
+🚀 Demo & Code
+Live Site: Visit the live website
 
+Stack: React, Vite, Tailwind CSS, EmailJS.
