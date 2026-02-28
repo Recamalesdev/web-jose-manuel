@@ -55,7 +55,7 @@ Si deseas clonar y ejecutar este proyecto en tu entorno local:
 
 ```bash
 # 1. Clonar el repositorio
-git clone [https://github.com/recamalesdev/web-jose-manuel.git](https://github.com/recamalesdev/web-jose-manuel.git)
+git clone https://github.com/recamalesdev/web-jose-manuel.git https://github.com/recamalesdev/web-jose-manuel.git
 
 # 2. Entrar en el directorio
 cd web-jose-manuel
@@ -65,7 +65,7 @@ npm install
 
 # 4. Iniciar servidor de desarrollo
 npm run dev
----
+```
 
 👤 Autor
 Bernardo Recamales
