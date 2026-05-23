@@ -1,4 +1,9 @@
-import { FaFacebook } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+} from "react-icons/fa";
 import {
   BRAND_LOGO,
   BRAND_LOGO_ACCENT,
@@ -29,16 +34,20 @@ export default function Footer() {
         <div className="flex flex-wrap justify-center gap-6 mb-8 text-sm font-medium">
           <a
             href={`tel:${PHONE_TEL}`}
-            className="hover:text-accent transition"
+            aria-label={`Llamar al ${PHONE_DISPLAY}`}
+            className="hover:text-accent transition inline-flex items-center gap-2"
           >
-            📞 {PHONE_DISPLAY}
+            <FaPhoneAlt aria-hidden />
+            {PHONE_DISPLAY}
           </a>
 
           <a
             href={`mailto:${EMAIL}`}
-            className="hover:text-accent transition"
+            aria-label={`Enviar email a ${EMAIL}`}
+            className="hover:text-accent transition inline-flex items-center gap-2"
           >
-            ✉️ {EMAIL}
+            <FaEnvelope aria-hidden />
+            {EMAIL}
           </a>
 
           <a
@@ -51,7 +60,10 @@ export default function Footer() {
             <span>Ver trabajos</span>
           </a>
 
-          <span>📍 {LOCATION}</span>
+          <span className="inline-flex items-center gap-2">
+            <FaMapMarkerAlt aria-hidden />
+            {LOCATION}
+          </span>
         </div>
 
         <div className="border-t border-primary-light pt-8">

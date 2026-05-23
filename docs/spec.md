@@ -119,7 +119,7 @@ VITE_EMAILJS_PUBLIC_KEY=
 
 - TypeScript estricto en `desatascos-bornos/src/`
 - ESLint sin errores
-- `index.html`: `lang="es"`, meta description, favicon
+- `index.html`: `lang="es"`, meta description, favicon de marca DESATOROS 24H, `theme-color`
 - CI: lint + test + build en PR y push a `main`
 - Deploy: Vercel con root directory `desatascos-bornos`
 - Análisis de seguridad documentado en [`SECURITY.md`](SECURITY.md) por componente

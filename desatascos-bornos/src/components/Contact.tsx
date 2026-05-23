@@ -2,6 +2,12 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
 import {
+  FaCheckCircle,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import {
   CONTACT_SERVICE_OPTIONS,
   EMAIL,
   LOCATION,
@@ -95,26 +101,30 @@ export default function Contact() {
               <div className="space-y-4">
                 <a
                   href={`tel:${PHONE_TEL}`}
+                  aria-label={`Llamar al ${PHONE_DISPLAY}`}
                   className="flex items-center gap-3 hover:text-accent transition-colors duration-300 group"
                 >
-                  <span className="text-2xl group-hover:scale-110 transition-transform">
-                    📞
-                  </span>
+                  <FaPhoneAlt
+                    className="text-xl shrink-0 group-hover:scale-110 transition-transform"
+                    aria-hidden
+                  />
                   <span className="font-bold text-lg">{PHONE_DISPLAY}</span>
                 </a>
 
                 <a
                   href={`mailto:${EMAIL}`}
+                  aria-label={`Enviar email a ${EMAIL}`}
                   className="flex items-center gap-3 hover:text-accent transition-colors duration-300 group"
                 >
-                  <span className="text-2xl group-hover:scale-110 transition-transform">
-                    ✉️
-                  </span>
+                  <FaEnvelope
+                    className="text-xl shrink-0 group-hover:scale-110 transition-transform"
+                    aria-hidden
+                  />
                   <span className="text-sm break-all">{EMAIL}</span>
                 </a>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">📍</span>
+                  <FaMapMarkerAlt className="text-xl shrink-0" aria-hidden />
                   <span>{LOCATION}</span>
                 </div>
               </div>
@@ -124,7 +134,10 @@ export default function Contact() {
           <div className="p-8 md:w-2/3 bg-surface-card">
             {isSubmitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in">
-                <div className="text-6xl mb-4">🎉</div>
+                <FaCheckCircle
+                  className="text-6xl text-success mb-4"
+                  aria-hidden
+                />
                 <h3 className="text-2xl font-bold text-text mb-2">
                   ¡Mensaje Recibido!
                 </h3>

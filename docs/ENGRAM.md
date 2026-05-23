@@ -45,3 +45,21 @@ Registro de aprendizajes entre sesiones de agente. **Al finalizar cada sesión**
 | **Por qué** | Alinear la web con la identidad real del negocio y modernizar la estética respecto al diseño impreso. |
 | **Dónde** | `constants.ts`, `index.css`, componentes UI, `index.html`, `docs/spec.md`, `constants.test.ts` |
 | **Aprendizaje** | Centralizar marca + servicios en `constants.ts` permite actualizar copy y tests desde un solo punto. Tailwind 4 `@theme` expone tokens como `bg-primary`, `text-accent` sin config extra. |
+
+## 2026-05-23 — Fase 4: favicon de marca
+
+| Campo | Contenido |
+|-------|-----------|
+| **Qué** | Favicon DESATOROS (navy + badge 24H cyan), `theme-color`, `apple-touch-icon`; Fase 4 añadida en `PLAN.md` (SEO, testimonios, emojis). |
+| **Por qué** | Pulir marca en pestaña móvil y planificar mejoras de visibilidad post-dominio `.com`. |
+| **Dónde** | `public/favicon.svg`, `index.html`, `favicon.test.ts`, `docs/PLAN.md`, `docs/spec.md` |
+| **Aprendizaje** | Test de asset estático con `readFileSync` valida colores de marca sin E2E. SEO avanzado queda bloqueado hasta dominio propio. |
+
+## 2026-05-23 — T-031 iconos en Contact/Footer
+
+| Campo | Contenido |
+|-------|-----------|
+| **Qué** | Emojis sustituidos por `react-icons/fa` (teléfono, email, ubicación, éxito formulario); `Footer.test.tsx` añadido. |
+| **Por qué** | Unificar iconografía con Navbar/Features y pulir detalle de marca (Fase 4). |
+| **Dónde** | `Contact.tsx`, `Footer.tsx`, `Contact.test.tsx`, `Footer.test.tsx`, `docs/PLAN.md` |
+| **Aprendizaje** | Usar `react-icons/fa` (no fa6) para coincidir con el resto del proyecto; `aria-label` en enlaces tel/mailto mejora accesibilidad y tests. |

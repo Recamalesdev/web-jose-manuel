@@ -51,15 +51,31 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 | T-010 | Assets SVG en `public/images/` | §4.1 | manual | ✅ |
 | T-011 | `index.html` SEO básico (`lang`, meta) | §5 | manual | ✅ |
 | T-012 | Branch protection + secrets GitHub/Vercel | §5 | — | ⏳ |
-| T-013 | PR modernización → merge `main` | §6 | CI verde | ⏳ |
+| T-013 | PR modernización → merge `main` | §6 | CI verde | ✅ |
 
 ## Fase 3 — Mejoras futuras (post-v1)
 
 | ID | Tarea | Spec | Tests | Estado |
 |----|-------|------|-------|--------|
-| T-020 | Tests dedicados Footer / WhatsAppBtn | §4.4 | nuevos | ⏳ |
+| T-020 | Tests dedicados Footer / WhatsAppBtn | §4.4 | Footer ✅, WhatsAppBtn ⏳ | 🔄 |
 | T-021 | Analytics (Plausible o GA4) | §7 | — | ➖ |
 | T-022 | Rate limiting / honeypot en formulario | SECURITY | Contact | ⏳ |
+
+## Fase 4 — Visibilidad, prueba social y marca (post-dominio .com)
+
+> SEO avanzado (Search Console, Schema) se activa cuando el dominio `.com` esté comprado y apuntando en Vercel.
+
+| ID | Tarea | Área | Tests | Estado |
+|----|-------|------|-------|--------|
+| T-030 | Favicon marca DESATOROS 24H + `theme-color` | Marca | `favicon.test.ts` | ✅ |
+| T-031 | Sustituir emojis por `react-icons` en Contact/Footer | Marca | Contact/Footer | ✅ |
+| T-032 | Open Graph + Twitter Card meta tags | SEO | manual / html test | ⏳ |
+| T-033 | Schema.org `LocalBusiness` (JSON-LD) | SEO | manual | ⏳ |
+| T-034 | Sección zona de cobertura (Sierra de Cádiz) | SEO | smoke App | ⏳ |
+| T-035 | Sección testimonios / trabajos reales | Prueba social | nuevo componente | ⏳ |
+| T-036 | Optimizar imágenes (WebP, hero preload) | Performance | manual Lighthouse | ⏳ |
+| T-037 | Eliminar asset duplicado `desatasco-arqueta-fosa1.png` | Performance | constants.test | ✅ |
+| T-038 | Google Search Console + dominio `.com` | SEO | — | ⏳ (bloqueado dominio) |
 
 ---
 

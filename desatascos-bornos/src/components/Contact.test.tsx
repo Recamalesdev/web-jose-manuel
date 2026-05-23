@@ -29,6 +29,17 @@ describe("Contact", () => {
     vi.stubEnv("VITE_EMAILJS_PUBLIC_KEY", "test_key");
   });
 
+  it("renders contact info with accessible links", () => {
+    render(<Contact />);
+
+    expect(
+      screen.getByRole("link", { name: `Llamar al ${PHONE_DISPLAY}` }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /Enviar email a/i }),
+    ).toBeInTheDocument();
+  });
+
   it("renders the contact form with required fields", () => {
     render(<Contact />);
 
