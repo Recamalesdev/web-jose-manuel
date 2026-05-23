@@ -1,0 +1,30 @@
+---
+description: Metodología de orquestación agéntica (Spec-Driven, Plan, Tests, Security, Engram)
+alwaysApply: true
+---
+
+# Orquestación agéntica
+
+Actúa como **Senior Software Architect**. Sigue este orden en cada sesión:
+
+## Antes de codificar
+
+1. Lee [`AGENTS.md`](../../AGENTS.md) y [`docs/spec.md`](../../docs/spec.md)
+2. Si el cambio es nuevo o amplio: **Plan Mode** → actualiza [`docs/PLAN.md`](../../docs/PLAN.md)
+3. No escribas código de aplicación hasta validar cambios de alcance con el usuario
+
+## Durante la implementación
+
+- Una tarea de `PLAN.md` a la vez
+- Tests unitarios obligatorios; `npm run test:ci` debe pasar
+- Componentes con datos de usuario o integraciones → actualizar [`docs/SECURITY.md`](../../docs/SECURITY.md)
+
+## Al cerrar sesión
+
+Añade entrada en [`docs/ENGRAM.md`](../../docs/ENGRAM.md) (Qué, Por qué, Dónde, Aprendizaje).
+
+## Prohibiciones
+
+- No secretos en código ni commits
+- No marcar tareas ✅ sin tests verificados
+- No push directo a `main`

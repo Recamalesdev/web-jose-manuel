@@ -1,0 +1,37 @@
+---
+description: Convenciones para la app desatascos-bornos (React + TypeScript)
+globs: desatascos-bornos/**/*
+alwaysApply: false
+---
+
+# desatascos-bornos
+
+Lee [`AGENTS.md`](../../AGENTS.md) y [`docs/spec.md`](../../docs/spec.md) antes de cambios significativos.
+
+## Stack
+
+React 19, TypeScript, Vite 7, Tailwind 4, Vitest.
+
+## Patrones
+
+```tsx
+// Constantes de negocio centralizadas
+import { PHONE_DISPLAY, PHONE_TEL } from "../constants";
+
+// EmailJS solo vía env
+emailjs.send(
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  templateParams,
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+);
+```
+
+## Reglas
+
+- Copy UI en español; identificadores en inglés
+- Imágenes en `public/images/`, nunca URLs externas en producción
+- Teléfono siempre desde `constants.ts`
+- No hardcodear secretos EmailJS
+- Tests obligatorios para lógica de Contact y datos de contacto en Navbar
+- Registrar tarea en `docs/PLAN.md` y seguridad en `docs/SECURITY.md` si aplica

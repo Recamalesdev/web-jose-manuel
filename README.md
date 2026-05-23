@@ -10,25 +10,29 @@
 
 ## 📋 Sobre el Proyecto
 
-Este proyecto es una **Single Page Application (SPA)** desarrollada para digitalizar un negocio local de desatascos y fontanería. 
+Este proyecto es una **Single Page Application (SPA)** desarrollada para digitalizar un negocio local de desatascos y fontanería.
 
 El objetivo principal era crear una presencia digital rápida, accesible y enfocada en la conversión (llamadas de urgencia), sustituyendo métodos tradicionales por una solución tecnológica moderna.
 
 ### 🚀 Despliegue (Demo)
+
 Puedes ver el proyecto en funcionamiento aquí:
+
 👉 **[Visitar la Web de Desatascos Manuel](https://web-jose-manuel-seven.vercel.app/)**
 
 ---
 
 ## 🛠️ Stack Tecnológico
 
-He utilizado un stack moderno enfocado en el rendimiento (Performance) y la experiencia de usuario (UX):
+| Carpeta | Descripción | Stack |
+|---------|-------------|-------|
+| [`desatascos-bornos/`](desatascos-bornos/) | Landing page de conversión | React 19, TypeScript, Vite 7, Tailwind 4 |
 
 <p align="left">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JS" />
   <img src="https://img.shields.io/badge/EmailJS-FF9A00?style=for-the-badge&logo=email&logoColor=white" alt="EmailJS" />
 </p>
 
@@ -36,11 +40,11 @@ He utilizado un stack moderno enfocado en el rendimiento (Performance) y la expe
 
 ## ✨ Características Principales
 
-* **⚡ Rendimiento Ultra-rápido:** Construido con **Vite**, eliminando tiempos de carga innecesarios críticos para servicios de urgencia.
-* **📱 Diseño Mobile-First:** Interfaz totalmente responsiva y adaptada a móviles (donde ocurren el 90% de las búsquedas de urgencias).
-* **📧 Gestión de Presupuestos:** Integración con **EmailJS** para recepción de formularios de contacto directamente al correo del cliente sin necesidad de Backend complejo.
-* **🎨 UI/UX Moderna:** Uso de **Tailwind CSS** para un diseño limpio, con feedback visual (Toasts/Confetti) para mejorar la interacción del usuario.
-* **🔒 Seguridad y Optimización:** Código limpio y estructurado siguiendo buenas prácticas de componentes en React.
+* **⚡ Rendimiento ultra-rápido:** Construido con **Vite**, ideal para servicios de urgencia.
+* **📱 Diseño mobile-first:** Interfaz responsiva adaptada a móviles.
+* **📧 Gestión de presupuestos:** Integración con **EmailJS** sin backend propio.
+* **🎨 UI/UX moderna:** Tailwind CSS, feedback visual y fotos reales de servicios.
+* **🧪 Calidad:** Tests con Vitest, ESLint y CI en GitHub Actions.
 
 ---
 
@@ -52,71 +56,67 @@ He utilizado un stack moderno enfocado en el rendimiento (Performance) y la expe
 
 ## 🔧 Instalación Local
 
-Si deseas clonar y ejecutar este proyecto en tu entorno local:
-
 ```bash
-# 1. Clonar el repositorio
-git clone [https://github.com/recamalesdev/web-jose-manuel.git](https://github.com/recamalesdev/web-jose-manuel.git)
-
-# 2. Entrar en el directorio
-cd web-jose-manuel
-
-# 3. Instalar dependencias
+git clone https://github.com/Recamalesdev/web-jose-manuel.git
+cd web-jose-manuel/desatascos-bornos
+cp .env.example .env   # Rellenar credenciales EmailJS
 npm install
-
-# 4. Iniciar servidor de desarrollo
 npm run dev
 ```
+
+## Documentación para agentes
+
+| Documento | Propósito |
+|-----------|-----------|
+| [`AGENTS.md`](AGENTS.md) | Orquestación, stack, convenciones y flujo |
+| [`docs/spec.md`](docs/spec.md) | Especificación (Spec-Driven Development) |
+| [`docs/PLAN.md`](docs/PLAN.md) | Task list vinculada a la spec |
+| [`docs/SECURITY.md`](docs/SECURITY.md) | Análisis de vulnerabilidades |
+| [`docs/ENGRAM.md`](docs/ENGRAM.md) | Memoria persistente entre sesiones |
+
+## CI/CD
+
+GitHub Actions ejecuta lint, tests y build en cada PR y push a `main`. Vercel despliega automáticamente tras merge.
+
 ---
-👤 Author
 
-Bernardo Recamales
+👤 **Author:** Bernardo Recamales — Frontend Developer & Trail Runner 🏔️
 
-Frontend Developer & Trail Runner 🏔️
 ---
 
 <a id="english"></a>
 ## 🌍 English Version
-*(Translated with the assistance of AI for technical accuracy)*
 
 # 🚛 Desatascos Manuel - Corporate Website
 
 > **Professional web solution for 24/7 emergency services and maintenance in Sierra de Cádiz, Spain.**
 
 ![Project Status](https://img.shields.io/badge/Status-In_Production-success?style=for-the-badge)
-![Licencia](https://img.shields.io/badge/Private-License-red?style=for-the-badge)
+![License](https://img.shields.io/badge/Private-License-red?style=for-the-badge)
 
 ## 📋 About the Project
 
-This project is a **Single Page Application (SPA)** developed to digitize a local plumbing and drainage business. The main goal was to create a fast, accessible, and conversion-oriented digital presence (focused on emergency calls).
+This project is a **Single Page Application (SPA)** developed to digitize a local plumbing and drainage business, focused on fast load times and conversion (emergency calls).
 
 ### 🚀 Live Demo
-You can see the project running here:
+
 👉 **[Visit Desatascos Manuel Website](https://web-jose-manuel-seven.vercel.app/)**
 
 ---
 
 ## 🛠️ Tech Stack
 
-I have used a modern stack focused on performance and user experience (UX):
-
-<p align="left">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
-  <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JS" />
-  <img src="https://img.shields.io/badge/EmailJS-FF9A00?style=for-the-badge&logo=email&logoColor=white" alt="EmailJS" />
-</p>
+React 19, TypeScript, Vite 7, Tailwind CSS 4, EmailJS, Vitest.
 
 ---
 
 ## ✨ Key Features
 
-* **⚡ Ultra-fast Performance:** Built with **Vite**, ensuring minimal load times for emergency situations.
-* **📱 Mobile-First Design:** Fully responsive interface optimized for smartphones.
-* **📧 Lead Generation:** Integrated with **EmailJS** to send quote requests directly to the client's email.
-* **🎨 Modern UI/UX:** Clean, professional look achieved with **Tailwind CSS**.
-* **🔒 Code Quality:** Structured and maintainable code using React best practices.
+* **⚡ Ultra-fast performance** with Vite
+* **📱 Mobile-first design**
+* **📧 Lead generation** via EmailJS
+* **🎨 Modern UI/UX** with real service photos
+* **🧪 Automated quality checks** with CI
 
 ---
 
@@ -128,23 +128,12 @@ I have used a modern stack focused on performance and user experience (UX):
 
 ## 🔧 Local Installation
 
-If you want to clone and run this project in your local environment:
-
 ```bash
-# 1. Clone the repository
-git clone [https://github.com/recamalesdev/web-jose-manuel.git](https://github.com/recamalesdev/web-jose-manuel.git)
-
-# 2. Enter the directory
-cd web-jose-manuel
-
-# 3. Install dependencies
+git clone https://github.com/Recamalesdev/web-jose-manuel.git
+cd web-jose-manuel/desatascos-bornos
+cp .env.example .env
 npm install
-
-# 4. Start development server
 npm run dev
 ```
-👤 Author
 
-Bernardo Recamales
-
-Frontend Developer & Trail Runner 🏔️
+👤 **Author:** Bernardo Recamales — Frontend Developer & Trail Runner 🏔️

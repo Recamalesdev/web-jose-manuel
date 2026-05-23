@@ -1,4 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #1a2b48;
+  --color-primary-light: #243b5e;
+  --color-accent: #0ea5e9;
+  --color-accent-dark: #0284c7;
+  --color-surface: #f4f7fa;
+  --color-surface-card: #ffffff;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-success: #059669;
+  --color-success-dark: #047857;
+  --color-border: #e2e8f0;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
