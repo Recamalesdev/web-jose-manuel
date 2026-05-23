@@ -63,7 +63,7 @@ export default function Footer() {
           <div className="mt-4 text-xs text-gray-500">
             <span>Diseño y Desarrollo web por </span>
             <a
-              href="https://www.linkedin.com/feed/"
+              href="https://www.linkedin.com/in/bernardo-recamales-guti%C3%A9rrez-13b87a2a1/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-accent hover:text-accent-dark font-bold transition"
