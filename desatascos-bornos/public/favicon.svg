@@ -1,17 +1,39 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desatoros 24h">
-  <rect width="64" height="64" rx="14" fill="#1a2b48"/>
+  <defs>
+    <linearGradient id="bg" x1="10" y1="6" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#243b5e" />
+      <stop offset="1" stop-color="#1a2b48" />
+    </linearGradient>
+    <linearGradient id="badge" x1="36" y1="7" x2="60" y2="25" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8" />
+      <stop offset="1" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="badge-shadow" x="32" y="5" width="30" height="24" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#0c4a6e" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <rect width="64" height="64" rx="15" fill="url(#bg)" />
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13.5" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1" />
+
   <path
     fill="#ffffff"
-    d="M18 14h16.5c11.598 0 21 9.402 21 21s-9.402 21-21 21H18V14zm10 10v22h6.5c6.904 0 12.5-5.596 12.5-12.5S41.404 31 34.5 31H28V24z"
+    fill-rule="evenodd"
+    d="M16 14h17.5c12.426 0 22.5 10.074 22.5 22.5S45.926 59 33.5 59H16V14zm11 11v29h6.5c8.284 0 15-6.716 15-15s-6.716-15-15-15h-6.5V25z"
   />
-  <rect x="37" y="9" width="20" height="16" rx="5" fill="#0ea5e9"/>
+
+  <g filter="url(#badge-shadow)">
+    <rect x="36" y="8" width="24" height="18" rx="6" fill="url(#badge)" />
+  </g>
   <text
-    x="47"
-    y="21"
+    x="48"
+    y="19.5"
     text-anchor="middle"
+    dominant-baseline="middle"
     fill="#ffffff"
-    font-family="system-ui, sans-serif"
+    font-family="system-ui, -apple-system, sans-serif"
     font-size="11"
-    font-weight="700"
+    font-weight="800"
+    letter-spacing="-0.4"
   >24</text>
 </svg>
