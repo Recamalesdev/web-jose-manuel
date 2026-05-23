@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd desatascos-bornos && npm run build",
-  "outputDirectory": "desatascos-bornos/dist",
-  "installCommand": "cd desatascos-bornos && npm ci",
-  "framework": "vite"
-}
