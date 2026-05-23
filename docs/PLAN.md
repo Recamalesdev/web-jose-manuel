@@ -67,7 +67,7 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 
 | ID | Tarea | Área | Tests | Estado |
 |----|-------|------|-------|--------|
-| T-030 | Favicon marca DESATOROS 24H + `theme-color` | Marca | `favicon.test.ts` | ✅ |
+| T-030 | Favicon marca DESATOROS 24H + PNG móvil (`apple-touch-icon`) | Marca | `favicon.test.ts` | ✅ |
 | T-031 | Sustituir emojis por `react-icons` en Contact/Footer | Marca | Contact/Footer | ✅ |
 | T-032 | Open Graph + Twitter Card meta tags | SEO | manual / html test | ⏳ |
 | T-033 | Schema.org `LocalBusiness` (JSON-LD) | SEO | manual | ⏳ |
