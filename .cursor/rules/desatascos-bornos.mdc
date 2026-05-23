@@ -6,7 +6,7 @@ alwaysApply: false
 
 # desatascos-bornos
 
-Lee `AGENTS.md` y `spec.md` en la raíz antes de cambios significativos.
+Lee [`AGENTS.md`](../../AGENTS.md) y [`docs/spec.md`](../../docs/spec.md) antes de cambios significativos.
 
 ## Stack
 
@@ -34,3 +34,4 @@ emailjs.send(
 - Teléfono siempre desde `constants.ts`
 - No hardcodear secretos EmailJS
 - Tests obligatorios para lógica de Contact y datos de contacto en Navbar
+- Registrar tarea en `docs/PLAN.md` y seguridad en `docs/SECURITY.md` si aplica

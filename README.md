@@ -19,8 +19,13 @@ npm run dev
 
 ## Documentación para agentes
 
-- [`AGENTS.md`](AGENTS.md) — reglas, stack, convenciones y flujo de trabajo
-- [`spec.md`](spec.md) — requerimientos de negocio y técnicos
+| Documento | Propósito |
+|-----------|-----------|
+| [`AGENTS.md`](AGENTS.md) | Orquestación, stack, convenciones y flujo |
+| [`docs/spec.md`](docs/spec.md) | Especificación (Spec-Driven Development) |
+| [`docs/PLAN.md`](docs/PLAN.md) | Task list vinculada a la spec |
+| [`docs/SECURITY.md`](docs/SECURITY.md) | Análisis de vulnerabilidades |
+| [`docs/ENGRAM.md`](docs/ENGRAM.md) | Memoria persistente entre sesiones |
 
 ## CI/CD
 
@@ -28,7 +33,8 @@ GitHub Actions ejecuta lint, tests y build en cada PR y push a `main`. Vercel de
 
 ## Contribuir
 
-1. Crear rama `feat/...` desde `main`
-2. Implementar cambios siguiendo `spec.md`
-3. Abrir Pull Request
-4. Esperar CI verde antes de merge
+1. Leer `docs/spec.md` y validar alcance
+2. Crear rama `feat/...` desde `main`
+3. Implementar con tests (`npm run test:ci`)
+4. Abrir Pull Request
+5. Esperar CI verde antes de merge

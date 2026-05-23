@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Limpieza de pavimentos">
-  <rect width="800" height="480" fill="#6b7280"/>
-  <rect x="0" y="300" width="800" height="180" fill="#4b5563"/>
-  <path d="M0 300 L200 280 L400 300 L600 270 L800 300 L800 480 L0 480 Z" fill="#374151"/>
-  <text x="400" y="160" text-anchor="middle" fill="white" font-family="sans-serif" font-size="26" font-weight="bold">Limpieza de Pavimentos</text>
-</svg>

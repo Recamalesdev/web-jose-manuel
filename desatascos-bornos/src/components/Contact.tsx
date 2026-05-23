@@ -1,9 +1,15 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
-import { PHONE_DISPLAY, PHONE_TEL } from "../constants";
-
-type ServiceType = "general" | "urgencia" | "arquetas" | "pavimentos";
+import {
+  CONTACT_SERVICE_OPTIONS,
+  EMAIL,
+  LOCATION,
+  OWNER_NAME,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  type ServiceType,
+} from "../constants";
 
 interface FormData {
   nombre: string;
@@ -67,28 +73,29 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-surface">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-blue-900 mb-4">
-            ¿Tienes un problema de tuberías?
+          <h2 className="text-3xl font-bold text-primary mb-4">
+            ¿Tienes alguna duda?
           </h2>
-          <p className="text-gray-600">
-            Déjanos tus datos y te llamamos nosotros.
+          <p className="text-text-muted">
+            Déjanos tus datos y te llamamos nosotros. Presupuesto sin
+            compromiso.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
-          <div className="bg-blue-600 p-8 md:w-1/3 text-white flex flex-col justify-between">
+        <div className="bg-surface-card rounded-2xl shadow-xl overflow-hidden md:flex">
+          <div className="bg-primary p-8 md:w-1/3 text-white flex flex-col justify-between">
             <div>
               <h3 className="text-xl font-bold mb-4">Información Directa</h3>
-              <p className="mb-4 text-blue-100 text-sm">
+              <p className="mb-4 text-gray-300 text-sm">
                 Urgencias 24h disponibles.
               </p>
               <div className="space-y-4">
                 <a
                   href={`tel:${PHONE_TEL}`}
-                  className="flex items-center gap-3 hover:text-blue-200 transition-colors duration-300 group"
+                  className="flex items-center gap-3 hover:text-accent transition-colors duration-300 group"
                 >
                   <span className="text-2xl group-hover:scale-110 transition-transform">
                     📞
@@ -96,28 +103,38 @@ export default function Contact() {
                   <span className="font-bold text-lg">{PHONE_DISPLAY}</span>
                 </a>
 
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="flex items-center gap-3 hover:text-accent transition-colors duration-300 group"
+                >
+                  <span className="text-2xl group-hover:scale-110 transition-transform">
+                    ✉️
+                  </span>
+                  <span className="text-sm break-all">{EMAIL}</span>
+                </a>
+
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">📍</span>
-                  <span>Bornos, Cádiz</span>
+                  <span>{LOCATION}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="p-8 md:w-2/3 bg-white">
+          <div className="p-8 md:w-2/3 bg-surface-card">
             {isSubmitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in">
                 <div className="text-6xl mb-4">🎉</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-text mb-2">
                   ¡Mensaje Recibido!
                 </h3>
-                <p className="text-gray-600 mb-6">
-                  Manuel te llamará lo antes posible.
+                <p className="text-text-muted mb-6">
+                  {OWNER_NAME} te llamará lo antes posible.
                 </p>
                 <button
                   type="button"
                   onClick={() => setIsSubmitted(false)}
-                  className="text-blue-600 font-medium hover:text-blue-800 underline transition"
+                  className="text-accent font-medium hover:text-accent-dark underline transition"
                 >
                   Enviar otro mensaje
                 </button>
@@ -128,7 +145,7 @@ export default function Contact() {
                   <div>
                     <label
                       htmlFor="nombre"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-text mb-2"
                     >
                       Nombre
                     </label>
@@ -139,14 +156,14 @@ export default function Contact() {
                       value={formData.nombre}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-200 outline-none"
+                      className="w-full px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-accent/30 outline-none"
                       placeholder="Nombre"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="telefono"
-                      className="block text-sm font-medium text-gray-700 mb-2"
+                      className="block text-sm font-medium text-text mb-2"
                     >
                       Teléfono
                     </label>
@@ -157,7 +174,7 @@ export default function Contact() {
                       value={formData.telefono}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-200 outline-none"
+                      className="w-full px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-accent/30 outline-none"
                       placeholder="600..."
                     />
                   </div>
@@ -166,7 +183,7 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="servicio"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-text mb-2"
                   >
                     Servicio
                   </label>
@@ -175,19 +192,20 @@ export default function Contact() {
                     name="servicio"
                     value={formData.servicio}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-surface-card outline-none"
                   >
-                    <option value="general">Consulta General</option>
-                    <option value="urgencia">🚨 Urgencia 24h</option>
-                    <option value="arquetas">Limpieza de Arquetas</option>
-                    <option value="pavimentos">Limpieza de Pavimentos</option>
+                    {CONTACT_SERVICE_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
                 <div>
                   <label
                     htmlFor="mensaje"
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    className="block text-sm font-medium text-text mb-2"
                   >
                     Mensaje
                   </label>
@@ -197,7 +215,7 @@ export default function Contact() {
                     value={formData.mensaje}
                     onChange={handleChange}
                     rows={3}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-border outline-none"
                     placeholder="Detalles..."
                   />
                 </div>
@@ -208,7 +226,7 @@ export default function Contact() {
                   className={`w-full font-bold py-4 rounded-lg text-white transition duration-300 shadow-lg ${
                     isSending
                       ? "bg-gray-400 cursor-not-allowed"
-                      : "bg-blue-900 hover:bg-blue-800 hover:-translate-y-1"
+                      : "bg-primary hover:bg-primary-light hover:-translate-y-1"
                   }`}
                 >
                   {isSending

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import App from "./App";
+import { BRAND_NAME, OWNER_NAME } from "./constants";
 
 vi.mock("aos", () => ({
   default: {
@@ -14,20 +15,20 @@ describe("App", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /Desatascos Profesionales en Bornos/i,
+        name: BRAND_NAME,
       }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
-        name: /Por qué confían en nosotros/i,
+        name: new RegExp(`Por qué confiar en ${OWNER_NAME}`, "i"),
       }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("heading", { name: /Nuestros Servicios en la Sierra/i }),
+      screen.getByRole("heading", { name: /Nuestros Servicios/i }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
-        name: /Tienes un problema de tuberías/i,
+        name: /Tienes alguna duda/i,
       }),
     ).toBeInTheDocument();
     expect(

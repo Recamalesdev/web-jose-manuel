@@ -1,5 +1,7 @@
+import { BRAND_NAME, HERO_IMAGE, OWNER_NAME, TAGLINE } from "../constants";
+
 export default function Hero() {
-  const bgImage = "/images/hero-bg.svg";
+  const bgImage = HERO_IMAGE;
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
@@ -11,25 +13,27 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        <div className="absolute inset-0 bg-black/20 md:bg-black/40"></div>
+        <div className="absolute inset-0 bg-primary/75 md:bg-primary/80"></div>
       </div>
 
       <div className="relative z-20 text-center px-4 max-w-3xl">
-        <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">
-          Desatascos Profesionales en Bornos
+        <p className="text-accent font-semibold text-lg mb-3 tracking-wide">
+          {OWNER_NAME}
+        </p>
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
+          {BRAND_NAME}
         </h1>
 
         <p className="text-xl md:text-2xl mb-8 text-gray-200 drop-shadow-md">
-          Tu vecino de confianza para urgencias 24h y limpieza de tuberías en
-          toda la Sierra de Cádiz.
+          {TAGLINE}
         </p>
 
         <button
           type="button"
           onClick={scrollToContact}
-          className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition hover:scale-105 shadow-lg cursor-pointer"
+          className="bg-accent text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-accent-dark transition hover:scale-105 shadow-lg cursor-pointer"
         >
-          Pedir Presupuesto Gratis
+          Pedir Presupuesto Sin Compromiso
         </button>
       </div>
     </section>
