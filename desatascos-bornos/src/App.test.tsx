@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import App from "./App";
-import { BRAND_NAME, OWNER_NAME } from "./constants";
+import { BRAND_NAME, COVERAGE_AREA, OWNER_NAME } from "./constants";
 
 vi.mock("aos", () => ({
   default: {
@@ -25,6 +25,11 @@ describe("App", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: /Nuestros Servicios/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: new RegExp(`Zona de cobertura en la ${COVERAGE_AREA}`, "i"),
+      }),
     ).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {

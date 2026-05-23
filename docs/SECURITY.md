@@ -2,7 +2,7 @@
 
 Revisión por componente. Actualizar al añadir o modificar código con datos de usuario, integraciones externas o renderizado dinámico.
 
-**Última revisión:** 2026-05-23
+**Última revisión:** 2026-05-23 (T-023–T-025 implementados)
 
 ---
 
@@ -11,7 +11,7 @@ Revisión por componente. Actualizar al añadir o modificar código con datos de
 | Nivel | Cantidad | Notas |
 |-------|----------|-------|
 | Alto | 0 | — |
-| Medio | 2 | Spam en formulario; claves expuestas en cliente (esperado EmailJS) |
+| Medio | 1 | Claves expuestas en cliente (esperado EmailJS) |
 | Bajo | 3 | Dependencias, XSS teórico, enlaces externos |
 
 ---
@@ -24,10 +24,12 @@ Revisión por componente. Actualizar al añadir o modificar código con datos de
 |---------|--------|-------------------|---------------|
 | Credenciales EmailJS en código | Alto si hardcodeadas | Variables `VITE_*` vía env | ✅ Mantener; rotar en EmailJS si filtradas |
 | Claves en bundle cliente | Medio | Public key de EmailJS es pública por diseño | Limitar plantilla en dashboard EmailJS |
-| Spam / abuso del formulario | Medio | Ninguna en v1 | T-022: honeypot o rate limit en EmailJS |
-| XSS vía inputs | Bajo | React escapa por defecto; datos van a EmailJS | Validar longitud máxima en inputs |
+| Spam / abuso del formulario | Medio | Honeypot oculto + retardo mínimo 2s | ✅ T-022: respuesta silenciosa sin EmailJS; no revelar bloqueo al bot |
+| XSS vía inputs | Bajo | React escapa; Zod limita longitud | ✅ T-023: `contactSchema` con máx. 1000 chars en mensaje |
+| Datos malformados a EmailJS | Medio | Esquema Zod pre-envío | ✅ T-023: validación nombre/teléfono/servicio antes de `send` |
 | Exfiltración de PII | Bajo | Datos enviados solo a EmailJS | Revisar política de privacidad (fase 2) |
-| Error handling | Bajo | `catch` genérico + teléfono fallback | No exponer detalles técnicos al usuario ✅ |
+| Error handling EmailJS | Bajo | Estado `submitError` inline + CTA WhatsApp | ✅ T-024: sin `alert()`; enlace `wa.me` con contexto del formulario |
+| Caída total por error de render | Bajo | `AppErrorBoundary` en App | ✅ T-025: fallback WhatsApp + recargar |
 
 ---
 

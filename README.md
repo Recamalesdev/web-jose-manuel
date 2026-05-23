@@ -73,10 +73,11 @@ npm run dev
 | [`docs/PLAN.md`](docs/PLAN.md) | Task list vinculada a la spec |
 | [`docs/SECURITY.md`](docs/SECURITY.md) | Análisis de vulnerabilidades |
 | [`docs/ENGRAM.md`](docs/ENGRAM.md) | Memoria persistente entre sesiones |
+| [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md) | Runbook infra: secrets, Vercel, branch protection |
 
 ## CI/CD
 
-GitHub Actions ejecuta lint, tests y build en cada PR y push a `main`. Vercel despliega automáticamente tras merge.
+GitHub Actions ejecuta lint, tests y build en cada PR y push a `main`. Vercel despliega automáticamente tras merge. Configuración operativa: [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md).
 
 ---
 

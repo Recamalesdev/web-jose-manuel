@@ -9,8 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
-    "test:ci": "vitest run",
-    "generate:favicons": "node scripts/generate-favicons.mjs"
+    "test:ci": "npm run generate:webp && vitest run",
+    "generate:favicons": "node scripts/generate-favicons.mjs",
+    "generate:webp": "node scripts/generate-webp.mjs",
+    "prebuild": "npm run generate:webp"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -20,7 +22,8 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

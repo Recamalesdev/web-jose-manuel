@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   BRAND_NAME,
+  COVERAGE_TOWNS,
   EMAIL,
   HERO_IMAGE,
   OWNER_NAME,
@@ -25,6 +26,11 @@ describe("constants", () => {
       "Pavimentos",
       "Tuberías en general",
     ]);
+  });
+
+  it("defines the Sierra de Cádiz coverage towns", () => {
+    expect(COVERAGE_TOWNS).toContain("Bornos");
+    expect(COVERAGE_TOWNS.length).toBeGreaterThanOrEqual(5);
   });
 
   it("maps services to real photos or matching illustrations", () => {

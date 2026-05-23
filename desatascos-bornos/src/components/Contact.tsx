@@ -4,9 +4,21 @@ import confetti from "canvas-confetti";
 import {
   FaCheckCircle,
   FaEnvelope,
+  FaExclamationTriangle,
   FaMapMarkerAlt,
   FaPhoneAlt,
+  FaWhatsapp,
 } from "react-icons/fa";
+import {
+  HONEYPOT_FIELD_NAME,
+  shouldBlockSubmission,
+} from "../contactAntiSpam";
+import {
+  buildContactWhatsAppUrl,
+  contactSchema,
+  mapContactFieldErrors,
+  type ContactFormData,
+} from "../contactSchema";
 import {
   CONTACT_SERVICE_OPTIONS,
   EMAIL,
@@ -14,17 +26,11 @@ import {
   OWNER_NAME,
   PHONE_DISPLAY,
   PHONE_TEL,
-  type ServiceType,
 } from "../constants";
 
-interface FormData {
-  nombre: string;
-  telefono: string;
-  servicio: ServiceType;
-  mensaje: string;
-}
+type FormStatus = "idle" | "sending" | "submitted" | "submitError";
 
-const initialFormData: FormData = {
+const initialFormData: ContactFormData = {
   nombre: "",
   telefono: "",
   servicio: "general",
@@ -32,33 +38,74 @@ const initialFormData: FormData = {
 };
 
 export default function Contact() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [isSending, setIsSending] = useState(false);
+  const [formStatus, setFormStatus] = useState<FormStatus>("idle");
+  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<Record<keyof ContactFormData, string>>
+  >({});
+  const [validatedData, setValidatedData] = useState<ContactFormData | null>(
+    null,
+  );
+  const [honeypot, setHoneypot] = useState("");
+  const [formOpenedAt, setFormOpenedAt] = useState(() => Date.now());
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const field = name as keyof ContactFormData;
+
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFieldErrors((prev) => {
+      if (!prev[field]) {
+        return prev;
+      }
+
+      const next = { ...prev };
+      delete next[field];
+      return next;
+    });
+
+    if (formStatus === "submitError") {
+      setFormStatus("idle");
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSending(true);
 
-    const templateParams = {
-      nombre: formData.nombre,
-      telefono: formData.telefono,
-      servicio: formData.servicio,
-      mensaje: formData.mensaje,
-    };
+    const parsed = contactSchema.safeParse(formData);
+
+    if (!parsed.success) {
+      setFieldErrors(mapContactFieldErrors(parsed.error));
+      setFormStatus("idle");
+      return;
+    }
+
+    if (shouldBlockSubmission(honeypot, formOpenedAt)) {
+      setFieldErrors({});
+      setFormData(initialFormData);
+      setHoneypot("");
+      setValidatedData(null);
+      setFormStatus("submitted");
+      setFormOpenedAt(Date.now());
+      return;
+    }
+
+    setFieldErrors({});
+    setValidatedData(parsed.data);
+    setFormStatus("sending");
 
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
+        {
+          nombre: parsed.data.nombre,
+          telefono: parsed.data.telefono,
+          servicio: parsed.data.servicio,
+          mensaje: parsed.data.mensaje,
+        },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(() => {
@@ -69,14 +116,20 @@ export default function Contact() {
         });
 
         setFormData(initialFormData);
-        setIsSubmitted(true);
-        setIsSending(false);
+        setHoneypot("");
+        setValidatedData(null);
+        setFormStatus("submitted");
+        setFormOpenedAt(Date.now());
       })
       .catch(() => {
-        alert(`Hubo un error. Llama al ${PHONE_DISPLAY}.`);
-        setIsSending(false);
+        setFormStatus("submitError");
       });
   };
+
+  const whatsappFallbackUrl =
+    validatedData !== null
+      ? buildContactWhatsAppUrl(validatedData)
+      : buildContactWhatsAppUrl(formData);
 
   return (
     <section id="contact" className="py-20 bg-surface">
@@ -132,7 +185,7 @@ export default function Contact() {
           </div>
 
           <div className="p-8 md:w-2/3 bg-surface-card">
-            {isSubmitted ? (
+            {formStatus === "submitted" ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10 animate-fade-in">
                 <FaCheckCircle
                   className="text-6xl text-success mb-4"
@@ -146,14 +199,66 @@ export default function Contact() {
                 </p>
                 <button
                   type="button"
-                  onClick={() => setIsSubmitted(false)}
+                  onClick={() => {
+                    setFormStatus("idle");
+                    setFormOpenedAt(Date.now());
+                  }}
                   className="text-accent font-medium hover:text-accent-dark underline transition"
                 >
                   Enviar otro mensaje
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                <div
+                  className="absolute left-[-9999px] h-px w-px overflow-hidden"
+                  aria-hidden="true"
+                >
+                  <label htmlFor={HONEYPOT_FIELD_NAME}>No rellenar este campo</label>
+                  <input
+                    type="text"
+                    id={HONEYPOT_FIELD_NAME}
+                    name={HONEYPOT_FIELD_NAME}
+                    value={honeypot}
+                    onChange={(event) => setHoneypot(event.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                {formStatus === "submitError" && (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-red-200 bg-red-50 p-4 space-y-4"
+                  >
+                    <div className="flex gap-3">
+                      <FaExclamationTriangle
+                        className="text-red-600 text-xl shrink-0 mt-0.5"
+                        aria-hidden
+                      />
+                      <div>
+                        <p className="font-semibold text-red-800">
+                          No pudimos enviar tu solicitud
+                        </p>
+                        <p className="text-sm text-red-700 mt-1">
+                          Puede ser un problema temporal de red o del servicio
+                          de correo. Escríbenos por WhatsApp y te atenderemos
+                          al momento, o llama al {PHONE_DISPLAY}.
+                        </p>
+                      </div>
+                    </div>
+                    <a
+                      href={whatsappFallbackUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 bg-success text-white font-bold py-3 px-4 rounded-lg hover:bg-success-dark transition"
+                    >
+                      <FaWhatsapp aria-hidden />
+                      Continuar por WhatsApp
+                    </a>
+                  </div>
+                )}
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -168,10 +273,24 @@ export default function Contact() {
                       name="nombre"
                       value={formData.nombre}
                       onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-accent/30 outline-none"
+                      aria-invalid={Boolean(fieldErrors.nombre)}
+                      aria-describedby={
+                        fieldErrors.nombre ? "nombre-error" : undefined
+                      }
+                      className={`w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-accent/30 ${
+                        fieldErrors.nombre ? "border-red-500" : "border-border"
+                      }`}
                       placeholder="Nombre"
                     />
+                    {fieldErrors.nombre && (
+                      <p
+                        id="nombre-error"
+                        className="mt-2 text-sm text-red-600"
+                        role="alert"
+                      >
+                        {fieldErrors.nombre}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label
@@ -186,10 +305,26 @@ export default function Contact() {
                       name="telefono"
                       value={formData.telefono}
                       onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-accent/30 outline-none"
+                      aria-invalid={Boolean(fieldErrors.telefono)}
+                      aria-describedby={
+                        fieldErrors.telefono ? "telefono-error" : undefined
+                      }
+                      className={`w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-accent/30 ${
+                        fieldErrors.telefono
+                          ? "border-red-500"
+                          : "border-border"
+                      }`}
                       placeholder="600..."
                     />
+                    {fieldErrors.telefono && (
+                      <p
+                        id="telefono-error"
+                        className="mt-2 text-sm text-red-600"
+                        role="alert"
+                      >
+                        {fieldErrors.telefono}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -227,22 +362,37 @@ export default function Contact() {
                     name="mensaje"
                     value={formData.mensaje}
                     onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.mensaje)}
+                    aria-describedby={
+                      fieldErrors.mensaje ? "mensaje-error" : undefined
+                    }
                     rows={3}
-                    className="w-full px-4 py-3 rounded-lg border border-border outline-none"
+                    className={`w-full px-4 py-3 rounded-lg border outline-none ${
+                      fieldErrors.mensaje ? "border-red-500" : "border-border"
+                    }`}
                     placeholder="Detalles..."
                   />
+                  {fieldErrors.mensaje && (
+                    <p
+                      id="mensaje-error"
+                      className="mt-2 text-sm text-red-600"
+                      role="alert"
+                    >
+                      {fieldErrors.mensaje}
+                    </p>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSending}
+                  disabled={formStatus === "sending"}
                   className={`w-full font-bold py-4 rounded-lg text-white transition duration-300 shadow-lg ${
-                    isSending
+                    formStatus === "sending"
                       ? "bg-gray-400 cursor-not-allowed"
                       : "bg-primary hover:bg-primary-light hover:-translate-y-1"
                   }`}
                 >
-                  {isSending
+                  {formStatus === "sending"
                     ? "Enviando aviso..."
                     : "Solicitar Presupuesto Gratis"}
                 </button>

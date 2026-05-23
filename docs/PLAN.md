@@ -50,18 +50,26 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 |----|-------|------|-------|--------|
 | T-010 | Assets SVG en `public/images/` | §4.1 | manual | ✅ |
 | T-011 | `index.html` SEO básico (`lang`, meta) | §5 | manual | ✅ |
-| T-012 | Branch protection + secrets GitHub/Vercel | §5 | — | ⏳ |
+| T-012 | Branch protection + secrets GitHub/Vercel | §5 | Vercel ✅ formulario OK; GitHub secrets / branch protection opcionales | ✅ |
 | T-013 | PR modernización → merge `main` | §6 | CI verde | ✅ |
 
-## Fase 3 — Mejoras futuras (post-v1)
+## Fase 3 — Ingeniería Determinística (contacto)
 
 | ID | Tarea | Spec | Tests | Estado |
 |----|-------|------|-------|--------|
-| T-020 | Tests dedicados Footer / WhatsAppBtn | §4.4 | Footer ✅, WhatsAppBtn ⏳ | 🔄 |
-| T-021 | Analytics (Plausible o GA4) | §7 | — | ➖ |
-| T-022 | Rate limiting / honeypot en formulario | SECURITY | Contact | ⏳ |
+| T-023 | Esquema Zod + validación pre-envío Contact | §3.2 | `contactSchema.test.ts` + Contact | ✅ |
+| T-024 | Fallback inline + CTA WhatsApp en error EmailJS | §3.2 | `Contact.test.tsx` | ✅ |
+| T-025 | Error Boundary global App (crashes de render) | §4.1 | `AppErrorBoundary.test.tsx` | ✅ |
 
-## Fase 4 — Visibilidad, prueba social y marca (post-dominio .com)
+## Fase 4 — Mejoras futuras (post-v1)
+
+| ID | Tarea | Spec | Tests | Estado |
+|----|-------|------|-------|--------|
+| T-020 | Tests dedicados Footer / WhatsAppBtn | §4.4 | `Footer.test.tsx`, `WhatsAppBtn.test.tsx` | ✅ |
+| T-021 | Analytics (Plausible o GA4) | §7 | — | ➖ |
+| T-022 | Rate limiting / honeypot en formulario | SECURITY | `contactAntiSpam.test.ts`, Contact | ✅ |
+
+## Fase 5 — Visibilidad, prueba social y marca (post-dominio .com)
 
 > SEO avanzado (Search Console, Schema) se activa cuando el dominio `.com` esté comprado y apuntando en Vercel.
 
@@ -69,11 +77,11 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 |----|-------|------|-------|--------|
 | T-030 | Favicon marca DESATOROS 24H + PNG móvil (`apple-touch-icon`) | Marca | `favicon.test.ts` | ✅ |
 | T-031 | Sustituir emojis por `react-icons` en Contact/Footer | Marca | Contact/Footer | ✅ |
-| T-032 | Open Graph + Twitter Card meta tags | SEO | manual / html test | ⏳ |
-| T-033 | Schema.org `LocalBusiness` (JSON-LD) | SEO | manual | ⏳ |
-| T-034 | Sección zona de cobertura (Sierra de Cádiz) | SEO | smoke App | ⏳ |
-| T-035 | Sección testimonios / trabajos reales | Prueba social | nuevo componente | ⏳ |
-| T-036 | Optimizar imágenes (WebP, hero preload) | Performance | manual Lighthouse | ⏳ |
+| T-032 | Open Graph + Twitter Card meta tags | SEO | `seo.test.ts` | ✅ |
+| T-033 | Schema.org `LocalBusiness` (JSON-LD) | SEO | `localBusinessSchema.test.ts` | ✅ |
+| T-034 | Sección zona de cobertura (Sierra de Cádiz) | SEO | `CoverageArea.test.tsx`, App smoke | ✅ |
+| T-035 | Sección testimonios / trabajos reales | Prueba social | — | ➖ (sin fotos verificadas suficientes; Facebook en Footer) |
+| T-036 | Optimizar imágenes (WebP, hero preload) | Performance | `assets.test.ts`, `generate-webp.mjs` | ✅ |
 | T-037 | Eliminar asset duplicado `desatasco-arqueta-fosa1.png` | Performance | constants.test | ✅ |
 | T-038 | Google Search Console + dominio `.com` | SEO | — | ⏳ (bloqueado dominio) |
 

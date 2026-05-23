@@ -40,6 +40,18 @@ Al **finalizar cada sesión**, añadir entrada en [`docs/ENGRAM.md`](docs/ENGRAM
 - **Dónde** — archivos afectados
 - **Aprendizaje** — insight reutilizable
 
+### 6. Ingeniería Determinística
+
+Principio: **ningún dato sale del cliente ni ningún fallo externo deja la UX rota** sin contrato explícito.
+
+#### Flujo de contacto (EmailJS)
+
+1. **Muros de contención (Zod)** — Esquema estricto en `src/` que valide tipado y formato *antes* de llamar a `emailjs.send`. Si falla, mostrar errores por campo; **no** disparar la petición.
+2. **Patrones de fallback (resiliencia)** — Si EmailJS falla (red, cuota, 4xx/5xx), la app **no** puede colapsar ni depender de `alert()`. Mostrar estado `submitError` inline con copy claro y **Plan B inmediato**: CTA a WhatsApp (`wa.me`) con mensaje prefijado desde `constants.ts`.
+3. **Error Boundary** — Red global opcional en `App` para crashes de render. **No** sustituye el manejo de errores async del formulario.
+
+Tests obligatorios: esquema Zod (unit), envío bloqueado si inválido, UI de error + enlace WhatsApp en fallo EmailJS.
+
 ---
 
 ## Stack
@@ -47,6 +59,7 @@ Al **finalizar cada sesión**, añadir entrada en [`docs/ENGRAM.md`](docs/ENGRAM
 - **Frontend:** React 19, TypeScript, Vite 7, Tailwind CSS 4
 - **Testing:** Vitest, React Testing Library, jsdom
 - **Linting:** ESLint 9 (flat config)
+- **Validación:** Zod (formulario de contacto)
 - **Contacto:** EmailJS (`@emailjs/browser`)
 - **Deploy:** Vercel (root directory: `desatascos-bornos`)
 
@@ -98,6 +111,8 @@ npm run test:ci      # Vitest (CI, una pasada)
 - **No** imágenes hotlinked de terceros en producción — usar `public/images/`
 - **No** añadir librerías obsoletas (jQuery, Create React App, etc.)
 - **No** marcar tareas como terminadas sin tests que pasen
+- **No** enviar el formulario de contacto sin pasar el esquema Zod
+- **No** usar `alert()` como único fallback de error en EmailJS
 
 ## Variables de entorno
 

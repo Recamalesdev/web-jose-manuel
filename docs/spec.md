@@ -35,6 +35,7 @@ Documento de especificación (Spec-Driven Development). **El código es un artef
 | Hero | `#inicio` | Titular, subtítulo, CTA scroll a contacto | T-003 |
 | Features | — | 4 ventajas competitivas | T-004 |
 | Services | `#servicios` | 5 tarjetas de servicio con imagen | T-005 |
+| Coverage | `#cobertura` | Zona Sierra de Cádiz + localidades atendidas | T-034 |
 | Contact | `#contacto` | Formulario EmailJS + info directa | T-006 |
 | Footer | — | Teléfono, Facebook, copyright, crédito dev | T-007 |
 | WhatsApp | — | Botón flotante fijo | T-008 |
@@ -42,9 +43,16 @@ Documento de especificación (Spec-Driven Development). **El código es un artef
 ### 3.2 Formulario de contacto
 
 - Campos: nombre (required), teléfono (required), servicio (select: fontanería, cámara, fosas, pavimentos, tuberías), mensaje (optional)
+- **Validación determinística:** esquema Zod estricto antes de cualquier llamada a EmailJS
+  - `nombre`: trim, longitud mín/máx, sin vacío
+  - `telefono`: formato ES razonable (9 dígitos o prefijo +34)
+  - `servicio`: enum alineado con `CONTACT_SERVICE_OPTIONS`
+  - `mensaje`: longitud máxima (p. ej. 1000 caracteres)
 - Envío vía EmailJS con variables de entorno
-- Feedback: confetti + mensaje de éxito; alert en error con teléfono de fallback
-- Estados: idle, sending, submitted
+- Feedback éxito: confetti + mensaje de éxito
+- **Fallback (`submitError`):** panel inline (no `alert`) informando del fallo + botón WhatsApp con mensaje prefijado (Plan B)
+- **Anti-spam:** campo honeypot oculto (`empresa_web`) + retardo mínimo 2s; bloqueos muestran éxito silencioso sin llamar a EmailJS
+- Estados: `idle` | `sending` | `submitted` | `submitError`
 
 ### 3.3 Integraciones
 
@@ -80,6 +88,7 @@ index.html
 |------|------------|
 | UI | React 19, TypeScript, Tailwind CSS 4 |
 | Build | Vite 7 |
+| Validación | Zod (formulario de contacto) |
 | Contacto | EmailJS (`@emailjs/browser`) |
 | Animaciones | AOS (scroll), canvas-confetti (éxito formulario) |
 | Tests | Vitest, React Testing Library, jsdom |
@@ -102,7 +111,13 @@ VITE_EMAILJS_PUBLIC_KEY=
 |------------|---------------|
 | App | Smoke: renderiza secciones principales |
 | Navbar | Teléfono visible; enlaces de navegación |
-| Contact | Envío exitoso, error, estados del formulario |
+| Contact | Envío exitoso, validación Zod, error inline + WhatsApp, estados del formulario |
+| contactSchema | Esquema Zod: campos válidos/inválidos, enum servicio |
+| seo / index.html | Open Graph + Twitter Card alineados con `constants.ts` |
+| localBusinessSchema | JSON-LD LocalBusiness desde `constants.ts` |
+| CoverageArea | Cobertura Sierra de Cádiz, localidades, teléfono CTA |
+| contactAntiSpam | Honeypot, retardo mínimo, bloqueo silencioso |
+| assets / images | WebP generado, preload hero, `<picture>` en servicios |
 | Otros | Añadir al modificar lógica o datos de negocio |
 
 ### 4.5 Identidad visual
@@ -133,7 +148,7 @@ VITE_EMAILJS_PUBLIC_KEY=
 - [x] Formulario usa `import.meta.env.VITE_EMAILJS_*`
 - [x] Imágenes servidas desde `public/images/`
 - [x] `lang="es"` en HTML
-- [ ] PR con CI verde antes de merge a `main`
+- [x] PR con CI verde antes de merge a `main` (PR #1, modernización)
 
 ## 7. Fuera de alcance (v1)
 
@@ -150,4 +165,5 @@ VITE_EMAILJS_PUBLIC_KEY=
 | [`PLAN.md`](PLAN.md) | Desglose de tareas vinculadas a esta spec |
 | [`SECURITY.md`](SECURITY.md) | Análisis de vulnerabilidades por componente |
 | [`ENGRAM.md`](ENGRAM.md) | Memoria persistente entre sesiones |
+| [`BRANCH_PROTECTION.md`](BRANCH_PROTECTION.md) | Runbook GitHub Secrets, Vercel env, branch protection (T-012) |
 | [`../AGENTS.md`](../AGENTS.md) | Reglas de orquestación para agentes |

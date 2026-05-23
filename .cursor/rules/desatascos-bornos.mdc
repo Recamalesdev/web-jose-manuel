@@ -33,5 +33,6 @@ emailjs.send(
 - Imágenes en `public/images/`, nunca URLs externas en producción
 - Teléfono siempre desde `constants.ts`
 - No hardcodear secretos EmailJS
+- Formulario Contact: esquema Zod antes de `emailjs.send`; fallback inline + WhatsApp en error (no `alert()`)
 - Tests obligatorios para lógica de Contact y datos de contacto en Navbar
 - Registrar tarea en `docs/PLAN.md` y seguridad en `docs/SECURITY.md` si aplica

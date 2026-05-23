@@ -1,8 +1,6 @@
-import { BRAND_NAME, HERO_IMAGE, OWNER_NAME, TAGLINE } from "../constants";
+import { BRAND_NAME, HERO_BACKGROUND_IMAGE, OWNER_NAME, TAGLINE } from "../constants";
 
 export default function Hero() {
-  const bgImage = HERO_IMAGE;
-
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -11,7 +9,7 @@ export default function Hero() {
     <section className="relative h-[70vh] flex items-center justify-center text-white">
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
+        style={{ backgroundImage: HERO_BACKGROUND_IMAGE }}
       >
         <div className="absolute inset-0 bg-primary/75 md:bg-primary/80"></div>
       </div>

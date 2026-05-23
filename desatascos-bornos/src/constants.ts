@@ -4,6 +4,19 @@ export const BRAND_LOGO_ACCENT = "24H";
 export const OWNER_NAME = "Manuel López";
 export const LOCATION = "Bornos, Cádiz";
 
+export const COVERAGE_AREA = "Sierra de Cádiz";
+
+export const COVERAGE_TOWNS = [
+  "Bornos",
+  "Prado del Rey",
+  "Villamartín",
+  "Algodonales",
+  "El Bosque",
+  "Ubrique",
+  "Arcos de la Frontera",
+  "Grazalema",
+] as const;
+
 export const PHONE_DISPLAY = "650 040 212";
 export const PHONE_TEL = "650040212";
 export const WHATSAPP_NUMBER = "34650040212";
@@ -20,6 +33,37 @@ export const FACEBOOK_URL =
 
 /** Foto real: furgoneta con equipos de alta presión */
 export const HERO_IMAGE = "/images/furgoneta-equipo-urgencias.png";
+
+export function toWebpAsset(path: string): string {
+  return path.replace(/\.(png|jpe?g)$/i, ".webp");
+}
+
+export const HERO_IMAGE_WEBP = toWebpAsset(HERO_IMAGE);
+
+export function buildResponsiveBackgroundImage(
+  webpPath: string,
+  fallbackPath: string,
+): string {
+  const fallbackType = fallbackPath.endsWith(".png")
+    ? "image/png"
+    : "image/jpeg";
+
+  return `image-set(url("${webpPath}") type("image/webp"), url("${fallbackPath}") type("${fallbackType}"))`;
+}
+
+export const HERO_BACKGROUND_IMAGE = buildResponsiveBackgroundImage(
+  HERO_IMAGE_WEBP,
+  HERO_IMAGE,
+);
+
+/** URL canónica de producción (Vercel). Actualizar al migrar a dominio .com */
+export const SITE_URL = "https://web-jose-manuel-seven.vercel.app";
+
+export const SEO_TITLE = `${BRAND_NAME} | ${OWNER_NAME}`;
+
+export const SEO_DESCRIPTION = `${BRAND_NAME} — ${OWNER_NAME}. Fontanería, inspección con cámara, limpieza de fosas y pavimentos en ${LOCATION}. Llama al ${PHONE_DISPLAY}.`;
+
+export const OG_IMAGE_URL = `${SITE_URL}${HERO_IMAGE}`;
 
 export interface ServiceItem {
   id: number;
@@ -64,6 +108,10 @@ export const SERVICES: ServiceItem[] = [
       "Desatascos urgentes 24h para fregaderos, bajantes y baños. Llegamos rápido con equipos de alta potencia.",
     image: "/images/furgoneta-equipo-urgencias.png",
   },
+];
+
+export const RASTER_SERVICE_IMAGES = [
+  ...new Set([HERO_IMAGE, ...SERVICES.map((service) => service.image)]),
 ];
 
 export const CONTACT_SERVICE_OPTIONS = [
