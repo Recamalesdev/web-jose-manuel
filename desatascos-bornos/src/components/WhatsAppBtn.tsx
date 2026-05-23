@@ -1,13 +1,8 @@
-import React from "react";
-// Importamos el icono específico de la librería
 import { FaWhatsapp } from "react-icons/fa";
+import { WHATSAPP_MESSAGE, WHATSAPP_NUMBER } from "../constants";
 
 export default function WhatsAppBtn() {
-  const phoneNumber = "34650040212";
-  const message = "Hola, me gustaría pedir presupuesto para un desatasco.";
-
-  // Creamos el enlace oficial de la API de WhatsApp
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <a
@@ -19,7 +14,6 @@ export default function WhatsAppBtn() {
     >
       <FaWhatsapp className="text-3xl" />
 
-      {/* Texto que aparece al pasar el ratón */}
       <span className="absolute right-full mr-4 bg-white text-gray-800 text-sm font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-sm pointer-events-none">
         ¡Escríbenos!
       </span>

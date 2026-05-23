@@ -1,20 +1,19 @@
 export default function Hero() {
-  const bgImage =
-    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80";
+  const bgImage = "/images/hero-bg.svg";
+
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section className="relative h-[70vh] flex items-center justify-center text-white">
-      {/* FONDO: Imagen + Capa Oscura */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${bgImage})` }}
       >
-        {/* Esto es una capa negra semitransparente encima de la foto 
-            para que el texto blanco se lea perfectamente */}
         <div className="absolute inset-0 bg-black/20 md:bg-black/40"></div>
       </div>
 
-      {/* CONTENIDO (Texto y Botón) */}
       <div className="relative z-20 text-center px-4 max-w-3xl">
         <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">
           Desatascos Profesionales en Bornos
@@ -26,11 +25,8 @@ export default function Hero() {
         </p>
 
         <button
-          onClick={() =>
-            document
-              .getElementById("contact")
-              .scrollIntoView({ behavior: "smooth" })
-          }
+          type="button"
+          onClick={scrollToContact}
           className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition hover:scale-105 shadow-lg cursor-pointer"
         >
           Pedir Presupuesto Gratis

@@ -1,32 +1,32 @@
-// src/components/Services.jsx
-import React from "react";
-import furgoneta from "../assets/furgoneta.jpg";
+interface Service {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
 
 export default function Services() {
-  const services = [
+  const services: Service[] = [
     {
       id: 1,
       title: "Desatascos Urgentes 24h",
       description:
         "Llegamos en menos de 1 hora. Solución rápida para fregaderos, bajantes y baños atascados.",
-
-      image: furgoneta,
+      image: "/images/furgoneta.svg",
     },
-
     {
       id: 2,
       title: "Limpieza de Arquetas",
       description:
         "Eliminamos malos olores y prevenimos atascos limpiando los registros y sumideros de tu patio o comunidad.",
-      image:
-        "https://ae-pic-a1.aliexpress-media.com/kf/S0e8636b03bbd4bfe847ed1b04cbd77717.jpg",
+      image: "/images/arquetas.svg",
     },
     {
       id: 3,
       title: "Limpieza de Pavimentos",
       description:
         "Limpieza a alta presión de suelos, garajes y patios. Eliminamos suciedad incrustada.",
-      image: "https://www.excasas.com/images/galeria-de-imagenes/pavi.jpg",
+      image: "/images/pavimentos.svg",
     },
   ];
 
@@ -45,7 +45,6 @@ export default function Services() {
               data-aos-delay={index * 100}
               className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300"
             >
-              {/* ZONA DE LA IMAGEN */}
               <div className="h-48 overflow-hidden rounded-t-lg">
                 <img
                   src={service.image}
@@ -54,7 +53,6 @@ export default function Services() {
                 />
               </div>
 
-              {/* ZONA DEL TEXTO */}
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-blue-900">
                   {service.title}

@@ -1,5 +1,5 @@
-import React from "react";
 import { FaFacebook } from "react-icons/fa";
+import { PHONE_DISPLAY, PHONE_TEL } from "../constants";
 
 export default function Footer() {
   return (
@@ -15,8 +15,8 @@ export default function Footer() {
         </p>
 
         <div className="flex justify-center gap-6 mb-8 text-sm font-medium">
-          <a href="tel:650040212" className="hover:text-red-400 transition">
-            📞 650 040 212
+          <a href={`tel:${PHONE_TEL}`} className="hover:text-red-400 transition">
+            📞 {PHONE_DISPLAY}
           </a>
 
           <a
@@ -31,7 +31,6 @@ export default function Footer() {
           <span>📍 Bornos, Cádiz</span>
         </div>
 
-        {/* COPYRIGHT */}
         <div className="border-t border-gray-800 pt-8">
           <p className="text-gray-600 text-xs">
             &copy; {new Date().getFullYear()} Desatascos Manuel. Todos los

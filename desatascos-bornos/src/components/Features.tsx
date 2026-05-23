@@ -1,9 +1,15 @@
-import React from "react";
-// Importamos iconos específicos de la librería
+import type { ReactNode } from "react";
 import { FaShieldAlt, FaClock, FaTools, FaHandSparkles } from "react-icons/fa";
 
+interface Feature {
+  id: number;
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
 export default function Features() {
-  const features = [
+  const features: Feature[] = [
     {
       id: 1,
       icon: <FaClock className="text-4xl text-blue-600" />,
@@ -21,9 +27,9 @@ export default function Features() {
     {
       id: 3,
       icon: <FaTools className="text-4xl text-blue-600" />,
-      title: "Agua a Alta Presión", // Cambio de título
+      title: "Agua a Alta Presión",
       description:
-        "Desatascamos usando mangueras de alta potencia. El método más eficaz y limpio para liberar tus tuberías.", // Texto honesto
+        "Desatascamos usando mangueras de alta potencia. El método más eficaz y limpio para liberar tus tuberías.",
     },
     {
       id: 4,
@@ -50,8 +56,8 @@ export default function Features() {
           {features.map((item, index) => (
             <div
               key={item.id}
-              data-aos="fade-up" // <--- 1. Animación de aparición
-              data-aos-delay={index * 100} // <--- 2. Retraso incremental
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
               className="text-center p-6 border border-gray-100 rounded-2xl hover:shadow-xl transition-shadow duration-300 bg-blue-50/50"
             >
               <div className="flex justify-center mb-6">
