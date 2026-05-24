@@ -14,9 +14,31 @@ const sources = [
   "pavimentos.jpg",
 ];
 
+/** Card crops (16:9) from wide masters — keeps key action visible in h-48 tiles */
+const cardCrops = [
+  {
+    source: "desatasco-servicio-calle.png",
+    output: "desatasco-servicio-calle-card.png",
+    extract: { left: 0, top: 168, width: 1024, height: 576 },
+  },
+];
+
 const generated = [];
 
-for (const source of sources) {
+for (const crop of cardCrops) {
+  const inputPath = join(imagesDir, crop.source);
+  const outputPath = join(imagesDir, crop.output);
+
+  if (!existsSync(inputPath)) {
+    throw new Error(`Missing source image: ${inputPath}`);
+  }
+
+  await sharp(inputPath).extract(crop.extract).png().toFile(outputPath);
+}
+
+const webpSources = [...sources, ...cardCrops.map((crop) => crop.output)];
+
+for (const source of webpSources) {
   const inputPath = join(imagesDir, source);
 
   if (!existsSync(inputPath)) {

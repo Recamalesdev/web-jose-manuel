@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import indexHtml from "../index.html?raw";
+import desatascoCalleWebp from "../public/images/desatasco-servicio-calle-card.webp";
 import fontaneriaWebp from "../public/images/fontaneria.webp";
 import fosaWebp from "../public/images/desatasco-arqueta-fosa.webp";
 import furgonetaWebp from "../public/images/furgoneta-equipo-urgencias.webp";
@@ -15,6 +16,7 @@ import {
 
 const generatedWebpAssets = [
   furgonetaWebp,
+  desatascoCalleWebp,
   fontaneriaWebp,
   inspeccionWebp,
   fosaWebp,

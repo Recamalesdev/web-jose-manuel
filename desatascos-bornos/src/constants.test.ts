@@ -40,7 +40,7 @@ describe("constants", () => {
       "/images/inspeccion-camara.jpg",
       "/images/desatasco-arqueta-fosa.png",
       "/images/pavimentos.jpg",
-      "/images/furgoneta-equipo-urgencias.png",
+      "/images/desatasco-servicio-calle-card.png",
     ]);
   });
 });

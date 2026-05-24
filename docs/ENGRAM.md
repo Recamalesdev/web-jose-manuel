@@ -206,3 +206,14 @@ Registro de aprendizajes entre sesiones de agente. **Al finalizar cada sesión**
 | **Por qué** | Cerrar Fase 3–5 de código; único pendiente operativo = dominio `.com` (T-038). |
 | **Dónde** | `main` ← `feat/deterministic-seo-performance`; CI local 42 tests + lint + build OK |
 | **Aprendizaje** | PR no se abrió vía `gh` (sin auth); merge directo a `main` aceptado por el cliente. Vercel despliega al push. |
+
+---
+
+## 2026-05-24 — Foto real en tarjeta Tuberías
+
+| Campo | Contenido |
+|-------|-----------|
+| **Qué** | `desatasco-servicio-calle.png` en tarjeta «Tuberías en general»; hero mantiene furgoneta/equipos. |
+| **Por qué** | Foto auténtica de servicio en calle; evita duplicar hero y sustituye stock en el servicio más representativo. |
+| **Dónde** | `public/images/`, `constants.ts`, `Services.tsx`, `generate-webp.mjs`, tests |
+| **Aprendizaje** | `imagePosition: "left center"` en `ServiceItem` para recortes de fotos panorámicas en cards `h-48`. |

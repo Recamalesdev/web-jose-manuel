@@ -8,13 +8,14 @@ export const COVERAGE_AREA = "Sierra de Cádiz";
 
 export const COVERAGE_TOWNS = [
   "Bornos",
-  "Prado del Rey",
+  "Espera",
   "Villamartín",
   "Algodonales",
+  "Prado del Rey",
   "El Bosque",
-  "Ubrique",
   "Arcos de la Frontera",
   "Grazalema",
+  "Ubrique",
 ] as const;
 
 export const PHONE_DISPLAY = "650 040 212";
@@ -106,7 +107,7 @@ export const SERVICES: ServiceItem[] = [
     title: "Tuberías en general",
     description:
       "Desatascos urgentes 24h para fregaderos, bajantes y baños. Llegamos rápido con equipos de alta potencia.",
-    image: "/images/furgoneta-equipo-urgencias.png",
+    image: "/images/desatasco-servicio-calle-card.png",
   },
 ];
 
