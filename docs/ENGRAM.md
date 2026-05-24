@@ -195,3 +195,14 @@ Registro de aprendizajes entre sesiones de agente. **Al finalizar cada sesión**
 | **Por qué** | Evitar portfolio engañoso; prueba social vía enlace Facebook en Footer. |
 | **Dónde** | Eliminados `Testimonials.tsx`, tests; `App.tsx`, `constants.ts`, `PLAN.md`, `spec.md` |
 | **Aprendizaje** | No montar sección “trabajos reales” hasta tener ≥3 fotos verificadas del cliente. T-035 ➖. |
+
+---
+
+## 2026-05-24 — Merge a main (feat/deterministic-seo-performance)
+
+| Campo | Contenido |
+|-------|-----------|
+| **Qué** | Fast-forward `main` con `407cc4b`: Zod, anti-spam, Error Boundary, SEO (OG, JSON-LD, cobertura), WebP. T-014 ✅. |
+| **Por qué** | Cerrar Fase 3–5 de código; único pendiente operativo = dominio `.com` (T-038). |
+| **Dónde** | `main` ← `feat/deterministic-seo-performance`; CI local 42 tests + lint + build OK |
+| **Aprendizaje** | PR no se abrió vía `gh` (sin auth); merge directo a `main` aceptado por el cliente. Vercel despliega al push. |

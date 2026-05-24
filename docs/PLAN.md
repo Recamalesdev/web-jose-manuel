@@ -52,6 +52,7 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 | T-011 | `index.html` SEO básico (`lang`, meta) | §5 | manual | ✅ |
 | T-012 | Branch protection + secrets GitHub/Vercel | §5 | Vercel ✅ formulario OK; GitHub secrets / branch protection opcionales | ✅ |
 | T-013 | PR modernización → merge `main` | §6 | CI verde | ✅ |
+| T-014 | Merge `feat/deterministic-seo-performance` → `main` (SEO, Zod, WebP) | §6 | CI verde local; push `407cc4b` | ✅ |
 
 ## Fase 3 — Ingeniería Determinística (contacto)
 
@@ -71,7 +72,7 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 
 ## Fase 5 — Visibilidad, prueba social y marca (post-dominio .com)
 
-> SEO avanzado (Search Console, Schema) se activa cuando el dominio `.com` esté comprado y apuntando en Vercel.
+> **Bloqueo actual:** solo queda **T-038** (dominio `.com` + Search Console). El resto de Fase 5 está en producción tras merge `407cc4b`.
 
 | ID | Tarea | Área | Tests | Estado |
 |----|-------|------|-------|--------|
