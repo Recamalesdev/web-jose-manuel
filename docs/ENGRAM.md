@@ -217,3 +217,14 @@ Registro de aprendizajes entre sesiones de agente. **Al finalizar cada sesión**
 | **Por qué** | Foto auténtica de servicio en calle; evita duplicar hero y sustituye stock en el servicio más representativo. |
 | **Dónde** | `public/images/`, `constants.ts`, `Services.tsx`, `generate-webp.mjs`, tests |
 | **Aprendizaje** | `imagePosition: "left center"` en `ServiceItem` para recortes de fotos panorámicas en cards `h-48`. |
+
+---
+
+## 2026-05-29 — Dominio desatorosmanuel.com (T-038)
+
+| Campo | Contenido |
+|-------|-----------|
+| **Qué** | `SITE_URL` → `https://desatorosmanuel.com`; meta canonical/OG/Twitter; `vercel.json` 301 desde `web-jose-manuel-seven.vercel.app`; runbook DNS/Vercel/GSC en `BRANCH_PROTECTION.md`. |
+| **Por qué** | Cerrar T-038: URL canónica de marca, SEO y redirects sin perder tráfico del deploy Vercel anterior. |
+| **Dónde** | `constants.ts`, `index.html`, `vercel.json`, tests, `docs/BRANCH_PROTECTION.md`, `PLAN.md`, `spec.md`, `README.md` |
+| **Aprendizaje** | Una sola fuente (`SITE_URL`) + tests sobre `index.html?raw` evitan drift OG/JSON-LD. DNS y Search Console siguen siendo manuales tras el merge. |

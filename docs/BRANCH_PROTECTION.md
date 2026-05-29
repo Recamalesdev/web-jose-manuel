@@ -4,7 +4,7 @@ Runbook para cerrar la configuración operativa del repositorio [`Recamalesdev/w
 
 **Workflow CI:** `.github/workflows/ci.yml` — job `quality` (lint, test, build, audit).
 
-**Deploy:** Vercel → root directory `desatascos-bornos` → [web-jose-manuel-seven.vercel.app](https://web-jose-manuel-seven.vercel.app/)
+**Deploy:** Vercel → root directory `desatascos-bornos` → producción [desatorosmanuel.com](https://desatorosmanuel.com/) (redirect 301 desde `web-jose-manuel-seven.vercel.app` vía `vercel.json`)
 
 ---
 
@@ -71,7 +71,7 @@ Tras añadir o cambiar variables: **Redeploy** el último deployment de Producti
 
 ### Verificación
 
-1. Abre la [web en producción](https://web-jose-manuel-seven.vercel.app/).
+1. Abre la [web en producción](https://desatorosmanuel.com/).
 2. Envía el formulario de contacto con datos válidos.
 3. Debe mostrarse éxito (confetti) o, si EmailJS falla, el fallback WhatsApp — **no** un error silencioso en consola por env vacío.
 
@@ -142,9 +142,75 @@ Plantilla: `desatascos-bornos/.env.example`
 
 ---
 
+## 4. Dominio `desatorosmanuel.com` (T-038)
+
+El repositorio define la URL canónica en `SITE_URL` (`constants.ts`), meta OG/Twitter en `index.html`, JSON-LD y redirect 301 en `desatascos-bornos/vercel.json`.
+
+### Checklist T-038
+
+| # | Paso | Dónde | Estado |
+|---|------|-------|--------|
+| 1 | Merge a `main` con `SITE_URL` = `https://desatorosmanuel.com` | GitHub | ☐ |
+| 2 | Añadir dominio en Vercel | Project → Settings → Domains | ☐ |
+| 3 | Configurar DNS en el registrador | Ver registros que muestra Vercel | ☐ |
+| 4 | Dominio primario = `desatorosmanuel.com`; `www` → redirect a apex (recomendado) | Vercel Domains | ☐ |
+| 5 | Esperar certificado SSL (Let's Encrypt) | Vercel | ☐ |
+| 6 | Verificar redirect desde `*.vercel.app` | Navegador / `curl -I` | ☐ |
+| 7 | Google Search Console: propiedad URL `https://desatorosmanuel.com` | [Search Console](https://search.google.com/search-console) | ☐ |
+| 8 | Verificar propiedad (registro TXT DNS o archivo HTML en `public/`) | DNS / `public/` | ☐ |
+| 9 | Enviar sitemap (opcional v1: solo `/`) o URL de inspección | Search Console | ☐ |
+| 10 | Cambio de dirección (opcional): URL antigua `web-jose-manuel-seven.vercel.app` si GSC la tenía indexada | Search Console | ☐ |
+
+### Vercel — Dominios
+
+**Ruta:** Vercel Dashboard → Project **web-jose-manuel** → Settings → **Domains**
+
+1. **Add** `desatorosmanuel.com` y `www.desatorosmanuel.com`.
+2. Copia los registros DNS (normalmente `A` → `76.76.21.21` y/o `CNAME` → `cname.vercel-dns.com`) en tu registrador.
+3. Marca **`desatorosmanuel.com`** como dominio **Primary** de Production.
+4. Redirige `www.desatorosmanuel.com` → `desatorosmanuel.com` (301).
+
+### DNS típico (apex + www)
+
+| Tipo | Nombre | Valor (ejemplo Vercel) |
+|------|--------|-------------------------|
+| A | `@` | `76.76.21.21` |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+> Los valores exactos los muestra Vercel al añadir el dominio; no uses esta tabla si difieren.
+
+### Verificación post-DNS
+
+```bash
+curl -sI https://desatorosmanuel.com/ | head -5
+curl -sI https://web-jose-manuel-seven.vercel.app/ | head -5
+```
+
+- Producción debe responder **200** en `desatorosmanuel.com`.
+- El host `*.vercel.app` debe devolver **301/308** hacia `https://desatorosmanuel.com/`.
+
+### Google Search Console
+
+1. **Añadir propiedad** → prefijo de URL: `https://desatorosmanuel.com/`
+2. **Verificar** (método recomendado: registro TXT en DNS del dominio).
+3. Tras el primer deploy con dominio activo: **Inspección de URL** → solicitar indexación de la home.
+4. Si existía propiedad del subdominio Vercel: **Configuración → Cambios de dirección** hacia el dominio nuevo.
+
+### Código ya alineado
+
+| Archivo | Contenido |
+|---------|-----------|
+| `src/constants.ts` | `SITE_URL`, `OG_IMAGE_URL` |
+| `index.html` | `canonical`, `og:url`, `og:image`, `twitter:image` |
+| `vercel.json` | 301 `web-jose-manuel-seven.vercel.app` → `desatorosmanuel.com` |
+| Tests | `constants.test.ts`, `seo.test.ts`, `localBusinessSchema.test.ts` |
+
+---
+
 ## Historial
 
 | Fecha | Nota |
 |-------|------|
+| 2026-05-29 | T-038: dominio `desatorosmanuel.com` en código + runbook DNS/Vercel/GSC. |
 | 2026-05-23 | Runbook ampliado para cierre T-012. PR #1 (*modernización*) mergeado con CI verde. |
 | 2026-05-23 | **Cierre operativo:** Vercel con `VITE_EMAILJS_*` correctas; formulario en producción OK. `.env.example` solo placeholders (correcto). GitHub Secrets y branch protection = opcionales. |

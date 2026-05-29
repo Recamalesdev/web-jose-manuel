@@ -72,7 +72,7 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 
 ## Fase 5 — Visibilidad, prueba social y marca (post-dominio .com)
 
-> **Bloqueo actual:** solo queda **T-038** (dominio `.com` + Search Console). El resto de Fase 5 está en producción tras merge `407cc4b`.
+> **T-038:** dominio `desatorosmanuel.com` — código y redirects en repo; DNS/Vercel/Search Console = pasos manuales en [`BRANCH_PROTECTION.md`](BRANCH_PROTECTION.md#4-dominio-desatorosmanuelcom-t-038).
 
 | ID | Tarea | Área | Tests | Estado |
 |----|-------|------|-------|--------|
@@ -84,7 +84,7 @@ Lista de tareas vinculada a [`spec.md`](spec.md). Cada tarea requiere **tests un
 | T-035 | Sección testimonios / trabajos reales | Prueba social | — | ➖ (sin fotos verificadas suficientes; Facebook en Footer) |
 | T-036 | Optimizar imágenes (WebP, hero preload) | Performance | `assets.test.ts`, `generate-webp.mjs` | ✅ |
 | T-037 | Eliminar asset duplicado `desatasco-arqueta-fosa1.png` | Performance | constants.test | ✅ |
-| T-038 | Google Search Console + dominio `.com` | SEO | — | ⏳ (bloqueado dominio) |
+| T-038 | Google Search Console + dominio `desatorosmanuel.com` | SEO | `constants.test`, `seo.test` | 🔄 (código ✅; DNS + GSC manual) |
 
 ---
 

@@ -24,7 +24,7 @@ export const WHATSAPP_NUMBER = "34650040212";
 export const EMAIL = "jlopezmoreno1@icloud.com";
 
 export const TAGLINE =
-  "No dudes en consultar cualquier duda. Pedir presupuesto sin compromiso.";
+  "Atención rápida y profesional en toda la provincia. Resolvemos tu urgencia hoy mismo.";
 
 export const WHATSAPP_MESSAGE =
   "Hola, me gustaría pedir presupuesto sin compromiso.";
@@ -57,8 +57,8 @@ export const HERO_BACKGROUND_IMAGE = buildResponsiveBackgroundImage(
   HERO_IMAGE,
 );
 
-/** URL canónica de producción (Vercel). Actualizar al migrar a dominio .com */
-export const SITE_URL = "https://web-jose-manuel-seven.vercel.app";
+/** URL canónica de producción */
+export const SITE_URL = "https://desatorosmanuel.com";
 
 export const SEO_TITLE = `${BRAND_NAME} | ${OWNER_NAME}`;
 

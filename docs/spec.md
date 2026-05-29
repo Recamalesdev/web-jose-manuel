@@ -15,7 +15,8 @@ Documento de especificación (Spec-Driven Development). **El código es un artef
 | WhatsApp | +34 650 040 212 |
 | Email | jlopezmoreno1@icloud.com |
 | Servicios | Fontanería, inspección con cámara, limpieza de fosas sépticas, pavimentos, tuberías en general |
-| Mensaje comercial | No dudes en consultar cualquier duda. Pedir presupuesto sin compromiso. |
+| Mensaje comercial (Hero) | Atención rápida y profesional en toda la provincia. Resolvemos tu urgencia hoy mismo. |
+| URL producción | https://desatorosmanuel.com |
 | Objetivo | Landing de conversión (llamada, WhatsApp, formulario de presupuesto) |
 
 ## 2. Objetivos

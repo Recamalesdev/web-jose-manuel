@@ -18,7 +18,7 @@ El objetivo principal era crear una presencia digital rápida, accesible y enfoc
 
 Puedes ver el proyecto en funcionamiento aquí:
 
-👉 **[Visitar la Web de Desatascos Manuel](https://web-jose-manuel-seven.vercel.app/)**
+👉 **[Visitar la Web de Desatoros](https://desatorosmanuel.com/)**
 
 ---
 
@@ -101,7 +101,7 @@ This project is a **Single Page Application (SPA)** developed to digitize a loca
 
 ### 🚀 Live Demo
 
-👉 **[Visit Desatascos Manuel Website](https://web-jose-manuel-seven.vercel.app/)**
+👉 **[Visit Desatoros Website](https://desatorosmanuel.com/)**
 
 ---
 

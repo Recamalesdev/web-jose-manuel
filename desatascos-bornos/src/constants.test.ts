@@ -7,6 +7,7 @@ import {
   OWNER_NAME,
   PHONE_DISPLAY,
   SERVICES,
+  SITE_URL,
 } from "./constants";
 
 describe("constants", () => {
@@ -15,6 +16,7 @@ describe("constants", () => {
     expect(OWNER_NAME).toBe("Manuel López");
     expect(PHONE_DISPLAY).toBe("650 040 212");
     expect(EMAIL).toBe("jlopezmoreno1@icloud.com");
+    expect(SITE_URL).toBe("https://desatorosmanuel.com");
   });
 
   it("lists five services from the business card", () => {
