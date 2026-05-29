@@ -10,6 +10,9 @@ import {
 
 describe("social meta tags", () => {
   it("includes Open Graph tags aligned with SEO constants", () => {
+    expect(indexHtml).toContain(
+      `rel="canonical" href="${SITE_URL}/"`,
+    );
     expect(indexHtml).toContain(`<title>${SEO_TITLE}</title>`);
     expect(indexHtml).toContain(`content="${SEO_DESCRIPTION}"`);
     expect(indexHtml).toContain('property="og:type" content="website"');
